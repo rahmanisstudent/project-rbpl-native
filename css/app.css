@@ -1,0 +1,51 @@
+.navbar-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding-block: 1rem;
+  margin-inline: auto;
+
+  background-color: #ac6565;
+}
+header.navbar-container .nav-list ul {
+  padding-left: 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 2rem 1rem;
+}
+
+header.navbar-container .nav-list li {
+  list-style-type: none;
+}
+
+header.navbar-container .nav-list li a {
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: black;
+
+  transition: all 0.2s ease-in-out;
+}
+
+header.navbar-container .nav-list li:hover a {
+  background-color: #425c77;
+  color: white;
+}
+
+.calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.overview-pesanan {
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background-color: aqua;
+}
