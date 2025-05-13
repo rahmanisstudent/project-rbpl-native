@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalender Pekerjaan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .task-list {
+            max-width: 900px;
+            margin: auto;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .task {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .green { background-color: #c8e6c9; }
+        .red { background-color: #ffcdd2; }
+        .blue { background-color: #bbdefb; }
+        .add-task {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Sistem Informasi Manajemen Penjahit</h1>
+        <div class="menu-icon">☰</div>
+    </div>
+    
+    <h2 style="text-align: center; margin-top: 20px;">Kalender Pekerjaan Penjahit</h2>
+    <div id="calendar"></div>
+
+    <div class="task-list">
+        <h3>Daftar Pekerjaan</h3>
+        <div class="task green">Baju dinas Mas Amba (3 - 8 Juni 2019) - Finishing</div>
+        <div class="task red">Seragam batik Ibu Kus (3 - 8 Juni 2019) - Pemotongan</div>
+        <div class="task blue">Dress Mbak Hani (18 - 28 Juni 2019) - Belum dimulai</div>
+    </div>
+
+    <div class="add-task" onclick="alert('Form tambah pekerjaan akan ditampilkan!')">+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    {
+                        title: 'Baju dinas Mas Amba',
+                        start: '2025-02-26',
+                        end: '2025-03-03',
+                        color: 'green'
+                    },
+                    {
+                        title: 'Seragam batik Ibu Kus',
+                        start: '2025-03-15',
+                        end: '2025-03-20',
+                        color: 'red'
+                    },
+                    {
+                        title: 'Dress Mbak Hani',
+                        start: '2025-03-18',
+                        end: '2025-03-30',
+                        color: 'blue'
+                    }
+                ]
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
