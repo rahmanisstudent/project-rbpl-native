@@ -1,0 +1,154 @@
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            position: relative;
+            background-color: #333;
+            color: white;
+            padding: 45px 20px;
+        }
+        .menu{display: flex;}
+        .menu li {padding-left: 30px;}
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            transition: 0.5s ease-in-out;
+            position: relative;
+            text-transform: uppercase;
+            display: inline-block;
+        }
+        .menu li a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 1px;
+            background: #fff;
+            transition: 0.15s ease-in-out;
+        }
+        .menu li a:hover::after {
+            width: 100%;
+        }
+        .open-menu, .close-menu {
+            position: absolute;
+            color: white;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: none;
+        }
+        .open-menu {
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+        .close-menu {
+            top: 50%;
+            right: 20px;
+        }
+        #check {display: none;}
+        @media (max-width: 800px) {
+            .menu {
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+                height: 100vh;
+                position: fixed;
+                top: 0;
+                right: -100;
+                z-index: 100;
+                background-color: #333;
+                transition: all 0.2s ease-in-out;
+            }
+            .menu li {margin-top: 40px;}
+            .menu li a {padding: 10px;}
+            .open-menu, .close-menu {
+                display: block;
+            }
+            #check:checked ~ .menu {
+                right: 0;
+            }
+        }
+        /* .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 250px;
+            z-index: 1;
+            background: #333;
+            overflow-x: hidden;
+            padding-top: 10px;
+            transition: 0.5s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .sidebar ul {
+            position: relative;
+            height: 97vh;
+        }
+        .sidebar ul li{
+            list-style: none;
+            margin: 5px 0;
+        }
+        .sidebar ul li:hover{
+            background: #bbdefb;
+            transition: 0.3s ease;
+        } */
+        .navbar h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+        #calendar {
+            max-width: 900px;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .task-list {
+            max-width: 900px;
+            margin: auto;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .task {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+        .green { background-color: #c8e6c9; }
+        .red { background-color: #ffcdd2; }
+        .blue { background-color: #bbdefb; }
+        .add-task {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: #007bff;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+        }

@@ -5,73 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalender Pekerjaan</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
+    <link rel="stylesheet" href="css/nbl.css" />
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #333;
-            color: white;
-            padding: 10px 20px;
-        }
-        .navbar h1 {
-            margin: 0;
-            font-size: 20px;
-        }
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-        #calendar {
-            max-width: 900px;
-            margin: auto;
-            margin-top: 20px;
-        }
-        .task-list {
-            max-width: 900px;
-            margin: auto;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .task {
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-        .green { background-color: #c8e6c9; }
-        .red { background-color: #ffcdd2; }
-        .blue { background-color: #bbdefb; }
-        .add-task {
-            display: block;
-            width: 50px;
-            height: 50px;
-            background-color: #007bff;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            line-height: 50px;
-            border-radius: 50%;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            cursor: pointer;
-        }
-    </style>
 </head>
 <body>
-    <div class="navbar">
-        <h1>Sistem Informasi Manajemen Penjahit</h1>
-        <div class="menu-icon">☰</div>
-    </div>
-    
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li><h1>Sistem Informasi Manajemen Penjahit</h1></li>
+                <input type="checkbox" id="check">
+                <span class="menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Katalog</a></li>
+                    <li><a href="#">Laporan</a></li>
+                    <li><a href="#">Logout</a></li>
+                    <label for="check" class="close-menu"><i class="close">x</i></label>
+                </span>
+                <label for="check" class="open-menu"><i class="open">☰</i></label>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SIDEBAR -->
+    <!-- <div class="sidebar" id="sidebar">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="icon-home"></i></span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="icon-katalog"></i></span>
+                    <span class="text">Katalog</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="icon-laporan"></i></span>
+                    <span class="text">Laporan</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><i class="icon-logout"></i></span>
+                    <span class="text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div> -->
+
     <h2 style="text-align: center; margin-top: 20px;">Kalender Pekerjaan Penjahit</h2>
     <div id="calendar"></div>
 
@@ -92,26 +76,32 @@
                 events: [
                     {
                         title: 'Baju dinas Mas Amba',
-                        start: '2025-02-26',
-                        end: '2025-03-03',
+                        start: '2019-06-03',
+                        end: '2019-06-08',
                         color: 'green'
                     },
                     {
                         title: 'Seragam batik Ibu Kus',
-                        start: '2025-03-15',
-                        end: '2025-03-20',
+                        start: '2019-06-03',
+                        end: '2019-06-08',
                         color: 'red'
                     },
                     {
                         title: 'Dress Mbak Hani',
-                        start: '2025-03-18',
-                        end: '2025-03-30',
+                        start: '2019-06-18',
+                        end: '2019-06-28',
                         color: 'blue'
                     }
                 ]
             });
             calendar.render();
         });
+
+        document.querySelector('.menu-icon').addEventListener('click', function () {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.style.width = sidebar.style.width === '250px' ? '0' : '250px';
+        });
     </script>
 </body>
+
 </html>
