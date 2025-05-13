@@ -56,7 +56,7 @@
             transform: translateY(-50%);
         }
         .close-menu {
-            top: 50%;
+            top: 40px;
             right: 20px;
         }
         #check {display: none;}
@@ -69,7 +69,7 @@
                 height: 100vh;
                 position: fixed;
                 top: 0;
-                right: -100;
+                right: -100%;
                 z-index: 100;
                 background-color: #333;
                 transition: all 0.2s ease-in-out;
