@@ -1,30 +1,7 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalender Pekerjaan</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css">
-    <link rel="stylesheet" href="css/nbl.css" />
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-</head>
 <body>
-    <header>
-        <nav>
-            <ul class="navbar">
-                <li><h1>Sistem Informasi Manajemen Penjahit</h1></li>
-                <input type="checkbox" id="check">
-                <span class="menu">
-                    <li><a href="home.html">Home</a></li>
-                    <li><a href="katalog.html">Katalog</a></li>
-                    <li><a href="laporan.html">Laporan</a></li>
-                    <li><a onclick="alert('Keluar nih ceritanya!')">Logout</a></li>
-                    <label for="check" class="close-menu"><i class="icon-close"><img src="css/icon/close.png" width="20px"></i></label>
-                </span>
-                <label for="check" class="open-menu"><i class="icon-open"><img src="css/icon/burger.png" width="40px"></i></label>
-            </ul>
-        </nav>
-    </header>
+    <?php include 'nav.php' ?>
 
     <section class="main">
         <h2 style="text-align: center; margin-top: 20px;">Kalender Pekerjaan Penjahit</h2>
@@ -37,7 +14,7 @@
             <div class="task blue">Dress Mbak Hani (18 - 28 Juni 2019) - Belum dimulai</div>
         </div>
 
-        <div class="add-task">+</div>
+        <a href="tambah.html"><div class="add-task">+</div></a>
     </section>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
