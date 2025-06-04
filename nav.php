@@ -15,7 +15,7 @@
                 <li><h1>Sistem Informasi<br>Manajemen Penjahit</h1></li>
                 <input type="checkbox" id="check">
                 <span class="menu">
-                    <li><a href="home.php">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li><a href="katalog.html">Katalog</a></li>
                     <li><a href="laporan.html">Laporan</a></li>
                     <li><a onclick="alert('Keluar nih ceritanya!')">Logout</a></li>
