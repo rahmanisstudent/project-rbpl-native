@@ -100,15 +100,19 @@
       <li>
         <label for="tanggal-pengerjaan">
           Pilih Tanggal Pengerjaan
-          <select id="tanggal-pengerjaan" name="tanggal-pengerjaan" aria-label="Pilih Tanggal Pengerjaan">
-            <option value="" selected disabled></option>
-          </select>
+   <select id="tanggal-pengerjaan" name="tanggal-pengerjaan" aria-label="Pilih Tanggal Pengerjaan" onchange="showDateInput(this)" style="margin-bottom:8px;">
+      <option value="" selected disabled></option>
+      <option value="manual">Pilih Tanggal Manual...</option>
+    </select>
+    <span id="tanggal-date-container" style="display:none;">
+      <input type="date" id="tanggal-date" name="tanggal-date" style="margin-top:8px;">
+    </span>
         </label>
       </li>
       <li>
         <label for="catatan"
           style="display: block; margin-top: 8px; color: #a3b0d1; font-size: 14px; line-height: 18px;">
-          Catatan
+            Catatan
           <textarea id="catatan" name="catatan" rows="3" autocomplete="off"></textarea>
         </label>
       </li>
@@ -133,6 +137,16 @@
     }
     function closePopup() {
       document.getElementById('popup-ukuran').style.display = 'none';
+    }
+    function showDateInput(select) {
+        var container = document.getElementById('tanggal-date-container');
+        if (select.value === 'manual') {
+          container.style.display = 'inline';
+          document.getElementById('tanggal-date').focus();
+        } else {
+          container.style.display = 'none';
+          document.getElementById('tanggal-date').value = '';
+        }
     }
   </script>
 </body>
