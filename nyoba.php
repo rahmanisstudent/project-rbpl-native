@@ -133,15 +133,10 @@
             position: relative;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;    /* Angka di kiri */
+            align-items: flex-start;
             justify-content: flex-start;
             min-height: 56px;
             box-sizing: border-box;
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 2px;
-            position: relative;
-            overflow: hidden;
         }
 
         .day:hover {
@@ -196,26 +191,10 @@
             min-height: 8px;
         }
 
-        .order-dot {
-            width: 16px;
-            height: 6px;
-            border-radius: 3px;
-            flex-shrink: 0;
-        }
-
-        .order-dot.red { background-color: #e53e3e; }
-        .order-dot.blue { background-color: #3182ce; }
-        .order-dot.green { background-color: #38a169; }
-        .order-dot.yellow { background-color: #d69e2e; }
-        .order-dot.purple { background-color: #805ad5; }
-        .order-dot.orange { background-color: #dd6b20; }
-        .order-dot.pink { background-color: #d53f8c; }
-        .order-dot.cyan { background-color: #0987a0; }
-
         .day-number {
             font-size: 18px;
             font-weight: bold;
-            margin: 6px 0 0 8px;       /* Jarak dari kiri atas */
+            margin: 6px 0 0 8px;
             line-height: 1;
             color: inherit;
         }
@@ -256,6 +235,136 @@
             color: #38b2ac;
             font-weight: bold;
         }
+
+        /* Order Details Modal */
+        .order-details-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+
+        .order-details-content {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #718096;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s;
+        }
+
+        .close-btn:hover {
+            background: #f7fafc;
+            color: #2d3748;
+        }
+
+        .order-item {
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid;
+            background: #f7fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .order-item.red { border-left-color: #e53e3e; }
+        .order-item.blue { border-left-color: #3182ce; }
+        .order-item.green { border-left-color: #38a169; }
+        .order-item.yellow { border-left-color: #d69e2e; }
+        .order-item.purple { border-left-color: #805ad5; }
+        .order-item.orange { border-left-color: #dd6b20; }
+        .order-item.pink { border-left-color: #d53f8c; }
+        .order-item.cyan { border-left-color: #0987a0; }
+
+        .order-customer {
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 16px;
+        }
+
+        .order-type {
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .order-duration {
+            color: #718096;
+            font-size: 12px;
+            font-style: italic;
+        }
+
+        .no-orders {
+            text-align: center;
+            color: #718096;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        .order-status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-ongoing {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .status-starting {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+
+        .status-ending {
+            background: #fefcbf;
+            color: #d69e2e;
+        }
     </style>
 </head>
 <body>
@@ -266,17 +375,16 @@
             <div class="form-group">
                 <label>Pilih Tanggal Pengerjaan:</label>
                 <div class="date-picker">
-                    <div class="date-input" onclick="toggleCalendar()">
-                        <span id="selectedDateText">Pilih Tanggal Pengerjaan</span>
+                    <div class="date-input" onclick="toggleCalendar('start')">
+                        <span id="selectedStartDateText">Pilih Tanggal Pengerjaan</span>
                     </div>
                     
-                    <div class="calendar-dropdown" id="calendarDropdown">
+                    <div class="calendar-dropdown" id="startCalendarDropdown">
                         <div class="calendar-header">
                             <button class="nav-btn" onclick="previousMonth()">‹</button>
-                            <span class="month-year" id="monthYear"></span>
+                            <span class="month-year" id="startMonthYear"></span>
                             <button class="nav-btn" onclick="nextMonth()">›</button>
                         </div>
-                        
                         <div class="calendar-grid">
                             <div class="weekdays">
                                 <div class="weekday">SEN</div>
@@ -287,114 +395,77 @@
                                 <div class="weekday">SAB</div>
                                 <div class="weekday">MIN</div>
                             </div>
-                            <div class="days" id="daysContainer"></div>
+                            <div class="days" id="startDaysContainer"></div>
                         </div>
-                        
-                        <button class="confirm-btn" onclick="confirmDate()">✓</button>
+                        <button class="confirm-btn" onclick="confirmDate('start')">✓</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Pilih Tanggal Penyelesaian:</label>
+                <div class="date-picker">
+                    <div class="date-input" onclick="toggleCalendar('end')">
+                        <span id="selectedEndDateText">Pilih Tanggal Penyelesaian</span>
+                    </div>
+                    
+                    <div class="calendar-dropdown" id="endCalendarDropdown">
+                        <div class="calendar-header">
+                            <button class="nav-btn" onclick="previousMonth()">‹</button>
+                            <span class="month-year" id="endMonthYear"></span>
+                            <button class="nav-btn" onclick="nextMonth()">›</button>
+                        </div>
+                        <div class="calendar-grid">
+                            <div class="weekdays">
+                                <div class="weekday">SEN</div>
+                                <div class="weekday">SEL</div>
+                                <div class="weekday">RAB</div>
+                                <div class="weekday">KAM</div>
+                                <div class="weekday">JUM</div>
+                                <div class="weekday">SAB</div>
+                                <div class="weekday">MIN</div>
+                            </div>
+                            <div class="days" id="endDaysContainer"></div>
+                        </div>
+                        <button class="confirm-btn" onclick="confirmDate('end')">✓</button>
                     </div>
                 </div>
             </div>
             
             <div class="form-group">
                 <label>Tanggal Terpilih:</label>
-                <div class="selected-date" id="displaySelectedDate">Belum dipilih</div>
-            </div>
-            
-            <div class="form-group">
-                <label>Keterangan Warna Penanda:</label>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; font-size: 12px; margin-top: 8px;">
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 8px; height: 4px; background: #e53e3e; border-radius: 2px;"></div>
-                        <span>Kemeja/Blouse</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 8px; height: 4px; background: #3182ce; border-radius: 2px;"></div>
-                        <span>Dress/Rok</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 8px; height: 4px; background: #38a169; border-radius: 2px;"></div>
-                        <span>Celana</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <div style="width: 8px; height: 4px; background: #d69e2e; border-radius: 2px;"></div>
-                        <span>Jaket/Outer</span>
-                    </div>
-                </div>
+                <div class="selected-date" id="displaySelectedDates">Belum dipilih</div>
             </div>
         </div>
     </div>
 
-    <script>
-        let currentDate = new Date();
-        let selectedDate = null;
-        let tempSelectedDate = null;
+    <!-- Order Details Modal -->
+    <div class="order-details-modal" id="orderDetailsModal">
+        <div class="order-details-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Pesanan Tanggal</div>
+                <button class="close-btn" onclick="closeOrderDetails()">&times;</button>
+            </div>
+            <div id="orderDetailsList"></div>
+        </div>
+    </div>
 
-        // Data pesanan contoh dengan rentang tanggal
+    <script>
+        let currentDate = new Date(2025, 5, 1); // Default ke Juni 2025
+        let selectedStartDate = null;
+        let selectedEndDate = null;
+        let tempSelectedDate = null;
+        let activeCalendar = 'start';
+
         const orderData = [
-            {
-                id: 1,
-                customer: 'Mas Amba',
-                type: 'Kemeja',
-                color: 'red',
-                startDate: '2025-06-01',
-                endDate: '2025-06-11'
-            },
-            {
-                id: 2,
-                customer: 'Bu Sari',
-                type: 'Dress',
-                color: 'blue',
-                startDate: '2025-06-03',
-                endDate: '2025-06-08'
-            },
-            {
-                id: 3,
-                customer: 'Pak Budi',
-                type: 'Celana',
-                color: 'green',
-                startDate: '2025-06-10',
-                endDate: '2025-06-15'
-            },
-            {
-                id: 4,
-                customer: 'Mbak Rina',
-                type: 'Blouse',
-                color: 'yellow',
-                startDate: '2025-06-12',
-                endDate: '2025-06-18'
-            },
-            {
-                id: 5,
-                customer: 'Mas Doni',
-                type: 'Jaket',
-                color: 'purple',
-                startDate: '2025-06-16',
-                endDate: '2025-06-22'
-            },
-            {
-                id: 6,
-                customer: 'Bu Maya',
-                type: 'Rok',
-                color: 'orange',
-                startDate: '2025-06-20',
-                endDate: '2025-06-25'
-            },
-            {
-                id: 7,
-                customer: 'Pak Tono',
-                type: 'Kemeja',
-                color: 'pink',
-                startDate: '2025-06-24',
-                endDate: '2025-06-30'
-            },
-            {
-                id: 8,
-                customer: 'Mbak Lina',
-                type: 'Dress',
-                color: 'cyan',
-                startDate: '2025-06-28',
-                endDate: '2025-07-03'
-            }
+            {id: 1, customer: 'Mas Amba', type: 'Kemeja', color: 'red', startDate: '2025-06-01', endDate: '2025-06-11'},
+            {id: 2, customer: 'Bu Sari', type: 'Dress', color: 'blue', startDate: '2025-06-03', endDate: '2025-06-08'},
+            {id: 3, customer: 'Pak Budi', type: 'Celana', color: 'green', startDate: '2025-06-10', endDate: '2025-06-15'},
+            {id: 4, customer: 'Mbak Rina', type: 'Blouse', color: 'yellow', startDate: '2025-06-12', endDate: '2025-06-18'},
+            {id: 5, customer: 'Mas Doni', type: 'Jaket', color: 'purple', startDate: '2025-06-16', endDate: '2025-06-22'},
+            {id: 6, customer: 'Bu Maya', type: 'Rok', color: 'orange', startDate: '2025-06-20', endDate: '2025-06-25'},
+            {id: 7, customer: 'Pak Tono', type: 'Kemeja', color: 'pink', startDate: '2025-06-24', endDate: '2025-06-30'},
+            {id: 8, customer: 'Mbak Lina', type: 'Dress', color: 'cyan', startDate: '2025-06-28', endDate: '2025-07-03'}
         ];
 
         const monthNames = [
@@ -402,228 +473,221 @@
             'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'
         ];
 
-        function toggleCalendar() {
-            const dropdown = document.getElementById('calendarDropdown');
-            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-            
-            if (dropdown.style.display === 'block') {
-                renderCalendar();
-            }
+        function toggleCalendar(type) {
+            activeCalendar = type;
+            document.getElementById('startCalendarDropdown').style.display = 'none';
+            document.getElementById('endCalendarDropdown').style.display = 'none';
+            const dropdown = document.getElementById(type === 'start' ? 'startCalendarDropdown' : 'endCalendarDropdown');
+            dropdown.style.display = 'block';
+            tempSelectedDate = (type === 'start' ? selectedStartDate : selectedEndDate) ? new Date(type === 'start' ? selectedStartDate : selectedEndDate) : null;
+            renderCalendar(type);
         }
 
         function previousMonth() {
             currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
+            renderCalendar(activeCalendar);
         }
 
         function nextMonth() {
             currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
+            renderCalendar(activeCalendar);
         }
 
-        function renderCalendar() {
-            const monthYear = document.getElementById('monthYear');
-            const daysContainer = document.getElementById('daysContainer');
-            
+        function renderCalendar(type) {
+            const monthYear = document.getElementById(type === 'start' ? 'startMonthYear' : 'endMonthYear');
+            const daysContainer = document.getElementById(type === 'start' ? 'startDaysContainer' : 'endDaysContainer');
             monthYear.textContent = monthNames[currentDate.getMonth()] + ' ' + currentDate.getFullYear();
-            
-            // Clear previous days
             daysContainer.innerHTML = '';
-            
-            // Get first day of month and number of days
+
             const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
             const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
-            
-            // Calculate start date (beginning of calendar grid)
             const startDate = new Date(firstDay);
-            const dayOfWeek = (firstDay.getDay() + 6) % 7; // Convert Sunday=0 to Monday=0
+            const dayOfWeek = (firstDay.getDay() + 6) % 7;
             startDate.setDate(firstDay.getDate() - dayOfWeek);
-            
-            // Generate calendar days
+
             const dayElements = [];
             for (let i = 0; i < 42; i++) {
                 const currentDay = new Date(startDate);
                 currentDay.setDate(startDate.getDate() + i);
-                
+
                 const dayElement = document.createElement('div');
                 dayElement.className = 'day';
                 dayElement.textContent = currentDay.getDate();
-                dayElement.dataset.date = currentDay.getFullYear() + '-' + 
-                    String(currentDay.getMonth() + 1).padStart(2, '0') + '-' + 
+                dayElement.dataset.date = currentDay.getFullYear() + '-' +
+                    String(currentDay.getMonth() + 1).padStart(2, '0') + '-' +
                     String(currentDay.getDate()).padStart(2, '0');
-                
-                // Style days from other months
+
                 if (currentDay.getMonth() !== currentDate.getMonth()) {
                     dayElement.classList.add('other-month');
                 }
-                
-                // Highlight today
+
                 const today = new Date();
                 if (currentDay.toDateString() === today.toDateString()) {
                     dayElement.classList.add('today');
                 }
-                
-                // Show selected date
+
                 if (tempSelectedDate && currentDay.toDateString() === tempSelectedDate.toDateString()) {
                     dayElement.classList.add('selected');
                 }
-                
-                // Add click event
-                dayElement.addEventListener('click', function() {
-                    // Remove previous selection
-                    document.querySelectorAll('.day.selected').forEach(el => {
+
+                dayElement.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    daysContainer.querySelectorAll('.day.selected').forEach(el => {
                         el.classList.remove('selected');
                     });
-                    
-                    // Select current day
                     dayElement.classList.add('selected');
                     tempSelectedDate = new Date(currentDay);
+                    showOrderDetails(dayElement.dataset.date, dayElement);
                 });
-                
+
                 daysContainer.appendChild(dayElement);
                 dayElements.push(dayElement);
             }
-            
-            // Add order lines
-            renderOrderLines();
+            renderOrderLines(daysContainer, dayElements);
         }
 
-        function renderOrderLines() {
-            const daysContainer = document.getElementById('daysContainer');
-            
-            // Remove existing order lines
-            document.querySelectorAll('.order-line').forEach(line => line.remove());
-            
+        function renderOrderLines(daysContainer, dayElements) {
+            daysContainer.querySelectorAll('.order-line').forEach(line => line.remove());
             orderData.forEach((order, orderIndex) => {
                 const startDate = new Date(order.startDate);
                 const endDate = new Date(order.endDate);
-                
-                // Check if order is in current month view
                 const currentMonth = currentDate.getMonth();
                 const currentYear = currentDate.getFullYear();
-                
+
                 if ((startDate.getFullYear() === currentYear && startDate.getMonth() === currentMonth) ||
                     (endDate.getFullYear() === currentYear && endDate.getMonth() === currentMonth) ||
                     (startDate <= new Date(currentYear, currentMonth, 1) && endDate >= new Date(currentYear, currentMonth + 1, 0))) {
-                    
-                    const startDateStr = order.startDate;
-                    const endDateStr = order.endDate;
-                    
-                    const startElement = document.querySelector(`[data-date="${startDateStr}"]`);
-                    const endElement = document.querySelector(`[data-date="${endDateStr}"]`);
-                    
-                    if (startElement || endElement) {
-                        createOrderLine(order, orderIndex, startDateStr, endDateStr);
+
+                    let startIndex = -1, endIndex = -1;
+                    dayElements.forEach((day, idx) => {
+                        if (day.dataset.date === order.startDate) startIndex = idx;
+                        if (day.dataset.date === order.endDate) endIndex = idx;
+                    });
+                    if (startIndex === -1) startIndex = 0;
+                    if (endIndex === -1) endIndex = dayElements.length - 1;
+                    if (startIndex <= endIndex) {
+                        const startRow = Math.floor(startIndex / 7);
+                        const endRow = Math.floor(endIndex / 7);
+                        for (let row = startRow; row <= endRow; row++) {
+                            const rowStartIndex = row * 7;
+                            const rowEndIndex = Math.min(rowStartIndex + 6, dayElements.length - 1);
+                            const lineStartIndex = Math.max(startIndex, rowStartIndex);
+                            const lineEndIndex = Math.min(endIndex, rowEndIndex);
+                            const startDay = dayElements[lineStartIndex];
+                            const endDay = dayElements[lineEndIndex];
+                            const line = document.createElement('div');
+                            line.className = `order-line ${order.color}`;
+                            line.title = `${order.customer} - ${order.type}`;
+                            const startOffset = startDay.offsetLeft;
+                            const endOffset = endDay.offsetLeft + endDay.offsetWidth;
+                            const top = startDay.offsetTop + startDay.offsetHeight - 8 - (orderIndex % 4) * 4;
+                            line.style.position = 'absolute';
+                            line.style.left = startOffset + 'px';
+                            line.style.width = (endOffset - startOffset) + 'px';
+                            line.style.top = top + 'px';
+                            daysContainer.appendChild(line);
+                        }
                     }
                 }
             });
         }
 
-        function createOrderLine(order, orderIndex, startDateStr, endDateStr) {
-            const daysContainer = document.getElementById('daysContainer');
-            const allDays = Array.from(daysContainer.querySelectorAll('.day'));
-            
-            let startIndex = -1;
-            let endIndex = -1;
-            
-            // Find start and end indices
-            allDays.forEach((day, index) => {
-                if (day.dataset.date === startDateStr) startIndex = index;
-                if (day.dataset.date === endDateStr) endIndex = index;
-            });
-            
-            // If start is before calendar view, start from beginning
-            if (startIndex === -1) {
-                const startDate = new Date(startDateStr);
-                const firstCalendarDate = new Date(allDays[0].dataset.date);
-                if (startDate < firstCalendarDate) {
-                    startIndex = 0;
+        function confirmDate(type) {
+            if (tempSelectedDate) {
+                if (type === 'start') {
+                    selectedStartDate = new Date(tempSelectedDate);
+                    document.getElementById('selectedStartDateText').textContent = selectedStartDate.toLocaleDateString('id-ID');
+                } else {
+                    selectedEndDate = new Date(tempSelectedDate);
+                    document.getElementById('selectedEndDateText').textContent = selectedEndDate.toLocaleDateString('id-ID');
                 }
-            }
-            
-            // If end is after calendar view, end at last day
-            if (endIndex === -1) {
-                const endDate = new Date(endDateStr);
-                const lastCalendarDate = new Date(allDays[allDays.length - 1].dataset.date);
-                if (endDate > lastCalendarDate) {
-                    endIndex = allDays.length - 1;
-                }
-            }
-            
-            if (startIndex !== -1 && endIndex !== -1 && startIndex <= endIndex) {
-                const startRow = Math.floor(startIndex / 7);
-                const endRow = Math.floor(endIndex / 7);
-                
-                // Create lines for each row
-                for (let row = startRow; row <= endRow; row++) {
-                    const rowStartIndex = row * 7;
-                    const rowEndIndex = Math.min(rowStartIndex + 6, allDays.length - 1);
-                    
-                    const lineStartIndex = Math.max(startIndex, rowStartIndex);
-                    const lineEndIndex = Math.min(endIndex, rowEndIndex);
-                    
-                    const startDay = allDays[lineStartIndex];
-                    const endDay = allDays[lineEndIndex];
-                    
-                    const line = document.createElement('div');
-                    line.className = `order-line ${order.color}`;
-                    line.title = `${order.customer} - ${order.type}`;
-                    
-                    // Calculate position
-                    const startOffset = startDay.offsetLeft;
-                    const endOffset = endDay.offsetLeft + endDay.offsetWidth;
-                    const top = startDay.offsetTop + startDay.offsetHeight - 8 - (orderIndex % 4) * 4;
-
-                    line.style.position = 'absolute';
-                    line.style.left = startOffset + 'px';
-                    line.style.width = (endOffset - startOffset) + 'px';
-                    line.style.top = top + 'px';
-                                        
-                    daysContainer.appendChild(line);
-                }
+                document.getElementById('displaySelectedDates').textContent =
+                    `Pengerjaan: ${selectedStartDate ? selectedStartDate.toLocaleDateString('id-ID') : 'Belum dipilih'} - ` +
+                    `Penyelesaian: ${selectedEndDate ? selectedEndDate.toLocaleDateString('id-ID') : 'Belum dipilih'}`;
+                document.getElementById(type === 'start' ? 'startCalendarDropdown' : 'endCalendarDropdown').style.display = 'none';
             }
         }
 
-        function confirmDate() {
-            if (tempSelectedDate) {
-                selectedDate = new Date(tempSelectedDate);
-                
-                const options = {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                };
-                
-                const formattedDate = selectedDate.toLocaleDateString('id-ID', options);
-                
-                document.getElementById('selectedDateText').textContent = formattedDate;
-                document.getElementById('displaySelectedDate').textContent = formattedDate;
-                
-                // Hide calendar
-                document.getElementById('calendarDropdown').style.display = 'none';
+        function getOrdersForDate(dateString) {
+            return orderData.filter(order => {
+                const orderStart = new Date(order.startDate);
+                const orderEnd = new Date(order.endDate);
+                const checkDate = new Date(dateString);
+                return checkDate >= orderStart && checkDate <= orderEnd;
+            });
+        }
+
+        function getOrderStatus(order, dateString) {
+            const checkDate = new Date(dateString);
+            const startDate = new Date(order.startDate);
+            const endDate = new Date(order.endDate);
+            if (checkDate.getTime() === startDate.getTime()) {
+                return 'starting';
+            } else if (checkDate.getTime() === endDate.getTime()) {
+                return 'ending';
+            } else {
+                return 'ongoing';
             }
+        }
+
+        function showOrderDetails(dateString, dayElement) {
+            const orders = getOrdersForDate(dateString);
+            const modal = document.getElementById('orderDetailsModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const orderDetailsList = document.getElementById('orderDetailsList');
+            const date = new Date(dateString);
+            const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+            const formattedDate = date.toLocaleDateString('id-ID', options);
+            modalTitle.textContent = `Pesanan - ${formattedDate}`;
+            if (orders.length === 0) {
+                orderDetailsList.innerHTML = '<div class="no-orders">Tidak ada pesanan pada tanggal ini</div>';
+            } else {
+                orderDetailsList.innerHTML = orders.map(order => {
+                    const status = getOrderStatus(order, dateString);
+                    const statusText = {
+                        'starting': 'Mulai',
+                        'ending': 'Selesai',
+                        'ongoing': 'Dikerjakan'
+                    };
+                    return `
+                        <div class="order-item ${order.color}">
+                            <div class="order-customer">${order.customer}</div>
+                            <div class="order-type">${order.type}</div>
+                            <div class="order-duration">
+                                ${order.startDate} - ${order.endDate}
+                                <span class="order-status status-${status}">${statusText[status]}</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            modal.style.display = 'flex';
+        }
+
+        function closeOrderDetails() {
+            document.getElementById('orderDetailsModal').style.display = 'none';
         }
 
         // Close calendar when clicking outside
         document.addEventListener('click', function(event) {
-            const datePicker = document.querySelector('.date-picker');
-            if (!datePicker.contains(event.target)) {
-                document.getElementById('calendarDropdown').style.display = 'none';
+            const startPicker = document.querySelector('.date-picker:nth-child(1)');
+            const endPicker = document.querySelector('.date-picker:nth-child(2)');
+            const modal = document.getElementById('orderDetailsModal');
+            if (!event.target.closest('.date-picker') && !modal.contains(event.target)) {
+                document.getElementById('startCalendarDropdown').style.display = 'none';
+                document.getElementById('endCalendarDropdown').style.display = 'none';
+            }
+            if (event.target === modal) {
+                closeOrderDetails();
             }
         });
 
-        // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Set to June 2025 to show example data
-            currentDate = new Date(2025, 5, 1); // Month is 0-indexed, so 5 = June
-            renderCalendar();
+            renderCalendar('start');
         });
 
-        // Also initialize immediately
         setTimeout(() => {
-            currentDate = new Date(2025, 5, 1);
-            renderCalendar();
+            renderCalendar('start');
         }, 100);
     </script>
 </body>
