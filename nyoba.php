@@ -473,6 +473,13 @@
             'Jul', 'Ags', 'Sep', 'Okt', 'Nov', 'Des'
         ];
 
+        function formatTanggalIndonesiaLong(date) {
+    const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    const months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
+    const d = typeof date === 'string' ? new Date(date) : date;
+    return `${days[d.getDay()]}, ${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+}
+
         function toggleCalendar(type) {
             activeCalendar = type;
             document.getElementById('startCalendarDropdown').style.display = 'none';
@@ -594,19 +601,19 @@
 
         function confirmDate(type) {
             if (tempSelectedDate) {
-                if (type === 'start') {
-                    selectedStartDate = new Date(tempSelectedDate);
-                    document.getElementById('selectedStartDateText').textContent = selectedStartDate.toLocaleDateString('id-ID');
-                } else {
-                    selectedEndDate = new Date(tempSelectedDate);
-                    document.getElementById('selectedEndDateText').textContent = selectedEndDate.toLocaleDateString('id-ID');
-                }
-                document.getElementById('displaySelectedDates').textContent =
-                    `Pengerjaan: ${selectedStartDate ? selectedStartDate.toLocaleDateString('id-ID') : 'Belum dipilih'} - ` +
-                    `Penyelesaian: ${selectedEndDate ? selectedEndDate.toLocaleDateString('id-ID') : 'Belum dipilih'}`;
-                document.getElementById(type === 'start' ? 'startCalendarDropdown' : 'endCalendarDropdown').style.display = 'none';
+            if (type === 'start') {
+                selectedStartDate = new Date(tempSelectedDate);
+                document.getElementById('selectedStartDateText').textContent = formatTanggalIndonesiaLong(selectedStartDate);
+            } else {
+                selectedEndDate = new Date(tempSelectedDate);
+                document.getElementById('selectedEndDateText').textContent = formatTanggalIndonesiaLong(selectedEndDate);
             }
+            document.getElementById('displaySelectedDates').textContent =
+                `Pengerjaan: ${selectedStartDate ? formatTanggalIndonesiaLong(selectedStartDate) : 'Belum dipilih'} - ` +
+                `Penyelesaian: ${selectedEndDate ? formatTanggalIndonesiaLong(selectedEndDate) : 'Belum dipilih'}`;
+            document.getElementById(type === 'start' ? 'startCalendarDropdown' : 'endCalendarDropdown').style.display = 'none';
         }
+    }
 
         function getOrdersForDate(dateString) {
             return orderData.filter(order => {
@@ -631,38 +638,36 @@
         }
 
         function showOrderDetails(dateString, dayElement) {
-            const orders = getOrdersForDate(dateString);
-            const modal = document.getElementById('orderDetailsModal');
-            const modalTitle = document.getElementById('modalTitle');
-            const orderDetailsList = document.getElementById('orderDetailsList');
-            const date = new Date(dateString);
-            const options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
-            const formattedDate = date.toLocaleDateString('id-ID', options);
-            modalTitle.textContent = `Pesanan - ${formattedDate}`;
-            if (orders.length === 0) {
-                orderDetailsList.innerHTML = '<div class="no-orders">Tidak ada pesanan pada tanggal ini</div>';
-            } else {
-                orderDetailsList.innerHTML = orders.map(order => {
-                    const status = getOrderStatus(order, dateString);
-                    const statusText = {
-                        'starting': 'Mulai',
-                        'ending': 'Selesai',
-                        'ongoing': 'Dikerjakan'
-                    };
-                    return `
-                        <div class="order-item ${order.color}">
-                            <div class="order-customer">${order.customer}</div>
-                            <div class="order-type">${order.type}</div>
-                            <div class="order-duration">
-                                ${order.startDate} - ${order.endDate}
-                                <span class="order-status status-${status}">${statusText[status]}</span>
-                            </div>
+        const orders = getOrdersForDate(dateString);
+        const modal = document.getElementById('orderDetailsModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const orderDetailsList = document.getElementById('orderDetailsList');
+        const date = new Date(dateString);
+        modalTitle.textContent = `Pesanan - ${formatTanggalIndonesiaLong(date)}`;
+        if (orders.length === 0) {
+            orderDetailsList.innerHTML = '<div class="no-orders">Tidak ada pesanan pada tanggal ini</div>';
+        } else {
+            orderDetailsList.innerHTML = orders.map(order => {
+                const status = getOrderStatus(order, dateString);
+                const statusText = {
+                    'starting': 'Mulai',
+                    'ending': 'Selesai',
+                    'ongoing': 'Dikerjakan'
+                };
+                return `
+                    <div class="order-item ${order.color}">
+                        <div class="order-customer">${order.customer}</div>
+                        <div class="order-type">${order.type}</div>
+                        <div class="order-duration">
+                            ${formatTanggalIndonesiaLong(order.startDate)} - ${formatTanggalIndonesiaLong(order.endDate)}
+                            <span class="order-status status-${status}">${statusText[status]}</span>
                         </div>
-                    `;
-                }).join('');
-            }
-            modal.style.display = 'flex';
+                    </div>
+                `;
+            }).join('');
         }
+        modal.style.display = 'flex';
+    }
 
         function closeOrderDetails() {
             document.getElementById('orderDetailsModal').style.display = 'none';
