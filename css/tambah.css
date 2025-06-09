@@ -1,7 +1,8 @@
+
 /* General page styles */
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: #f4f6fb;
+  background: #0048ff;
   margin: 0;
   padding: 0;
   color: #222;
@@ -79,18 +80,23 @@ button[type="submit"]:hover,
   background: #2563eb;
 }
 
+.sub-but{
+  margin-top: 24px; 
+  width: 100%; 
+  padding: 12px; 
+  background: #4a5568 !important; 
+  color: #fff; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 16px; 
+  cursor: pointer;
+}
+
 /* Responsive */
 @media (max-width: 500px) {
   .form-container {
     padding: 18px 8px;
   }
-}
-
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f4f7fa;
-  margin: 0;
-  padding: 0;
 }
 
 form {

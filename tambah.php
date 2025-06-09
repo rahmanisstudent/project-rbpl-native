@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sistem Informasi Penjahit</title>
-  <link rel="stylesheet" href="css/tambah.css" />
+  <link rel="stylesheet" href="css/tambah.css"/>
 </head>
 
 <body>
@@ -98,26 +98,16 @@
         </div>
       </li>
       <li>
-        <label for="tanggal-pengerjaan">
-          Pilih Tanggal Pengerjaan
-   <select id="tanggal-pengerjaan" name="tanggal-pengerjaan" aria-label="Pilih Tanggal Pengerjaan" onchange="showDateInput(this)" style="margin-bottom:8px;">
-      <option value="" selected disabled></option>
-      <option value="manual">Pilih Tanggal Manual...</option>
-    </select>
-    <span id="tanggal-date-container" style="display:none;">
-      <input type="date" id="tanggal-date" name="tanggal-date" style="margin-top:8px;">
-    </span>
-        </label>
+          <?php include 'nyoba.php' ?>  <!--gatau kenapa ga bisa-->
       </li>
       <li>
-        <label for="catatan"
-          style="display: block; margin-top: 8px; color: #a3b0d1; font-size: 14px; line-height: 18px;">
+        <label for="catatan" id="label-catatan">
             Catatan
           <textarea id="catatan" name="catatan" rows="3" autocomplete="off"></textarea>
         </label>
       </li>
     </ul>
-    <button type="submit" style="margin-top: 24px; width: 100%; padding: 12px; background: #3b5998; color: #fff; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;">
+    <button type="submit" class="sub-but">
       Submit
     </button>
   </form>
@@ -127,7 +117,7 @@
     <div style="background:#fff; padding:24px; border-radius:8px; min-width:300px; position:relative;">
       <button onclick="closePopup()" style="position:absolute; top:8px; right:8px; background:none; border:none; font-size:18px; cursor:pointer;">&times;</button>
       <h3>Tambah Ukuran Baru</h3>
-      <p>Isi form ukuran tambahan di sini.</p>
+      <?php include 'ukuran.php'?>
       <!-- Tambahkan form atau input lain sesuai kebutuhan -->
     </div>
   </div>
@@ -148,6 +138,7 @@
           document.getElementById('tanggal-date').value = '';
         }
     }
+
   </script>
 </body>
 
