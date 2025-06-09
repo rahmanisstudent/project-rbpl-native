@@ -16,8 +16,8 @@
                 <input type="checkbox" id="check">
                 <span class="menu">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="katalog.html">Katalog</a></li>
-                    <li><a href="laporan.html">Laporan</a></li>
+                    <li><a href="katalog.php">Katalog</a></li>
+                    <li><a href="laporan.php">Laporan</a></li>
                     <li><a onclick="alert('Keluar nih ceritanya!')">Logout</a></li>
                     <label for="check" class="close-menu"><i class="icon-close"><img src="css/icon/close.png" width="20px"></i></label>
                 </span>
