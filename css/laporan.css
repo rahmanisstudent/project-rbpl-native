@@ -112,11 +112,17 @@ body {
 
 .div4 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     background-color: #6776a8;
     color: white;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+}
+
+.div4 ul {
+    margin-top: 20px;
 }
 
 .item {
@@ -124,6 +130,7 @@ body {
     border-radius: 8px;
     padding: 12px 16px;
     margin-bottom: 8px;
+    margin-top: 0px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -131,28 +138,28 @@ body {
     font-size: 14px;
 }
 
-        .info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
 
-        .status {
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
+.status {
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
 
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: #ff6b6b;
-        }
+.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #ff6b6b;
+}
 
-        .date {
-            font-size: 13px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
+.date {
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+}

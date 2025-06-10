@@ -96,7 +96,7 @@ $dataPoints = array(
             <ul>
                 <li class="item">
                     <div class="info">
-                        Ibu Kus<br>
+                        Ibu Kus
                         <div class="status">
                             <span class="dot"></span>
                             <span class="status-text">Pemotongan</span>
@@ -106,7 +106,7 @@ $dataPoints = array(
                 </li>
                 <li class="item">
                     <div class="info">
-                        Ibu Kus<br>
+                        Ibu Kus
                         <div class="status">
                             <span class="dot"></span>
                             <span class="status-text">Pemotongan</span>
@@ -116,7 +116,7 @@ $dataPoints = array(
                 </li>
                 <li class="item">
                     <div class="info">
-                        Ibu Kus<br>
+                        Ibu Kus
                         <div class="status">
                             <span class="dot"></span>
                             <span class="status-text">Pemotongan</span>

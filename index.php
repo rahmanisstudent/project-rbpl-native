@@ -9,7 +9,7 @@
 
         <div class="task-list">
             <h3>Daftar Pekerjaan</h3>
-            <div class="task green">Baju dinas Mas Amba (3 - 8 Juni 2019) - Finishing</div>
+            <div class="task green">Baju dinas Mas Jacobi (3 - 8 Juni 2019) - Finishing</div>
             <div class="task red">Seragam batik Ibu Kus (3 - 8 Juni 2019) - Pemotongan</div>
             <div class="task blue">Dress Mbak Hani (18 - 28 Juni 2019) - Belum dimulai</div>
         </div>
@@ -23,7 +23,7 @@
                 initialView: 'dayGridMonth',
                 events: [
                     {
-                        title: 'Baju dinas Mas Amba',
+                        title: 'Baju dinas Mas Jacobi',
                         start: '2025-06-03',
                         end: '2025-06-08',
                         color: 'green'
