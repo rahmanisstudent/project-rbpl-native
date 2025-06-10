@@ -1,0 +1,564 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
+
+.tambah-design {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.tambah-design .overlap-wrapper {
+  background-color: #ffffff;
+  width: 375px;
+  height: 667px;
+}
+
+.tambah-design .overlap {
+  position: relative;
+  height: 667px;
+}
+
+.tambah-design .scroll {
+  position: absolute;
+  width: 375px;
+  height: 667px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.tambah-design .scroll::-webkit-scrollbar {
+  width: 0;
+  display: none;
+}
+
+.tambah-design .group {
+  position: relative;
+  width: 375px;
+  height: 755px;
+  top: 74px;
+  background-color: #37455a;
+}
+
+.tambah-design .simpan {
+  position: absolute;
+  width: 102px;
+  height: 34px;
+  top: 668px;
+  left: 231px;
+}
+
+.tambah-design .overlap-group {
+  position: relative;
+  width: 100px;
+  height: 34px;
+  background-color: #00d18c;
+  border-radius: 10px;
+}
+
+.tambah-design .text-wrapper {
+  position: absolute;
+  width: 63px;
+  top: 8px;
+  left: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .cancel {
+  position: absolute;
+  width: 102px;
+  height: 34px;
+  top: 668px;
+  left: 123px;
+}
+
+.tambah-design .div-wrapper {
+  position: relative;
+  width: 100px;
+  height: 34px;
+  background-color: #42526b;
+  border-radius: 10px;
+}
+
+.tambah-design .div {
+  position: absolute;
+  width: 63px;
+  top: 8px;
+  left: 19px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .model {
+  position: absolute;
+  width: 295px;
+  height: 23px;
+  top: 30px;
+  left: 40px;
+}
+
+.tambah-design .text-wrapper-2 {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .overlap-2 {
+  position: absolute;
+  width: 166px;
+  height: 23px;
+  top: 0;
+  left: 125px;
+  background-color: #4d607c;
+  border-radius: 5px;
+}
+
+.tambah-design .text-wrapper-3 {
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #dcdcdc;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tambah-design .catatan {
+  position: absolute;
+  width: 295px;
+  height: 230px;
+  top: 394px;
+  left: 40px;
+}
+
+.tambah-design .overlap-3 {
+  position: absolute;
+  width: 291px;
+  height: 204px;
+  top: 26px;
+  left: 0;
+  background-color: #4d607c;
+  border-radius: 10px;
+}
+
+.tambah-design .p {
+  position: absolute;
+  top: 12px;
+  left: 15px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #dcdcdc;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tambah-design .text-wrapper-4 {
+  position: absolute;
+  width: 166px;
+  top: 0;
+  left: 0;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .gambar {
+  position: absolute;
+  width: 296px;
+  height: 106px;
+  top: 76px;
+  left: 40px;
+}
+
+.tambah-design .text-wrapper-5 {
+  position: absolute;
+  top: 78px;
+  left: 124px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ff0000;
+  font-size: 13px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tambah-design .vector-wrapper {
+  position: absolute;
+  width: 109px;
+  height: 106px;
+  top: 0;
+  left: 0;
+  background-color: #4d607c;
+  border-radius: 8px;
+}
+
+.tambah-design .vector {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 33px;
+  left: 35px;
+}
+
+.tambah-design .text-wrapper-6 {
+  position: absolute;
+  width: 170px;
+  top: 4px;
+  left: 122px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tambah-design .frame {
+  display: flex;
+  width: 112px;
+  height: 35px;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 7px;
+  position: absolute;
+  top: 36px;
+  left: 125px;
+  background-color: #00d18c;
+  border-radius: 8px;
+}
+
+.tambah-design .text-wrapper-7 {
+  position: relative;
+  width: fit-content;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tambah-design .ukuran {
+  position: absolute;
+  width: 308px;
+  height: 161px;
+  top: 214px;
+  left: 27px;
+}
+
+.tambah-design .overlap-group-wrapper {
+  position: relative;
+  height: 167px;
+  top: -6px;
+}
+
+.tambah-design .overlap-4 {
+  position: relative;
+  width: 308px;
+  height: 167px;
+}
+
+.tambah-design .rectangle {
+  position: absolute;
+  width: 291px;
+  height: 132px;
+  top: 19px;
+  left: 8px;
+  background-color: #4d607c;
+  border-radius: 14px;
+}
+
+.tambah-design .group-2 {
+  position: absolute;
+  width: 150px;
+  height: 31px;
+  top: 0;
+  left: 0;
+}
+
+.tambah-design .overlap-group-2 {
+  position: relative;
+  width: 148px;
+  height: 31px;
+  background-color: #00d18c;
+  border-radius: 7px;
+}
+
+.tambah-design .text-wrapper-8 {
+  position: absolute;
+  height: 19px;
+  top: 6px;
+  left: 8px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .group-3 {
+  position: absolute;
+  width: 116px;
+  height: 24px;
+  top: 40px;
+  left: 17px;
+}
+
+.tambah-design .overlap-5 {
+  position: relative;
+  width: 114px;
+  height: 24px;
+  background-color: #00d18c;
+  border-radius: 10px;
+}
+
+.tambah-design .x {
+  position: absolute;
+  width: 6px;
+  height: 7px;
+  top: 9px;
+  left: 99px;
+}
+
+.tambah-design .text-wrapper-9 {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .img {
+  position: absolute;
+  width: 1px;
+  height: 24px;
+  top: 0;
+  left: 91px;
+}
+
+.tambah-design .group-4 {
+  position: absolute;
+  width: 152px;
+  height: 24px;
+  top: 40px;
+  left: 137px;
+}
+
+.tambah-design .overlap-6 {
+  position: relative;
+  width: 150px;
+  height: 24px;
+  background-color: #00d18c;
+  border-radius: 10px;
+}
+
+.tambah-design .text-wrapper-10 {
+  position: absolute;
+  top: 6px;
+  left: 11px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 10px;
+  letter-spacing: 0;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.tambah-design .x-2 {
+  position: absolute;
+  width: 6px;
+  height: 7px;
+  top: 9px;
+  left: 132px;
+}
+
+.tambah-design .vector-2 {
+  left: 120px;
+  position: absolute;
+  width: 1px;
+  height: 24px;
+  top: 0;
+}
+
+.tambah-design .group-5 {
+  position: absolute;
+  width: 150px;
+  height: 24px;
+  top: 70px;
+  left: 17px;
+}
+
+.tambah-design .overlap-7 {
+  position: relative;
+  width: 148px;
+  height: 24px;
+  background-color: #00d18c;
+  border-radius: 10px;
+}
+
+.tambah-design .x-3 {
+  position: absolute;
+  width: 6px;
+  height: 7px;
+  top: 9px;
+  left: 134px;
+}
+
+.tambah-design .vector-3 {
+  left: 128px;
+  position: absolute;
+  width: 1px;
+  height: 24px;
+  top: 0;
+}
+
+.tambah-design .img-wrapper {
+  position: absolute;
+  width: 57px;
+  height: 57px;
+  top: 110px;
+  left: 251px;
+  background-color: #00d18c;
+  border-radius: 28.5px;
+}
+
+.tambah-design .img-2 {
+  position: absolute;
+  width: 31px;
+  height: 31px;
+  top: 13px;
+  left: 13px;
+}
+
+.tambah-design .nav {
+  position: absolute;
+  width: 375px;
+  height: 667px;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  border: 0px none;
+}
+
+.tambah-design .atas {
+  display: flex;
+  width: 375px;
+  height: 75px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 19px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #2e3c4e;
+  box-shadow:
+    0px 5px 11px #0000001a, 0px 20px 20px #00000017, 0px 45px 27px #0000000d, 0px 80px 32px #00000003, 0px 124px 35px transparent;
+}
+
+.tambah-design .SISTEM-INFORMASI {
+  position: relative;
+  width: fit-content;
+  margin-top: -0.50px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.tambah-design .group-6 {
+  position: relative;
+  width: 21px;
+  height: 15px;
+}
+
+.tambah-design .vector-4 {
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  top: -2px;
+  left: -2px;
+}
+
+.tambah-design .vector-5 {
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  top: 6px;
+  left: -2px;
+}
+
+.tambah-design .vector-6 {
+  position: absolute;
+  width: 24px;
+  height: 3px;
+  top: 14px;
+  left: -2px;
+}
+
+.tambah-design .rectangle-2 {
+  position: absolute;
+  width: 179px;
+  height: 592px;
+  top: 75px;
+  left: 375px;
+  background-color: #2e3c4e;
+}
