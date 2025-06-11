@@ -188,6 +188,7 @@ if (isset($_POST['submit'])) {
 <body>
     <?php include 'nav.php'; ?>
     <div class="container my-4">
+        <h1>Katalog Model</h1>
         <?php
         if ($error) {
             echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
@@ -196,18 +197,18 @@ if (isset($_POST['submit'])) {
             echo '<div class="alert alert-success" role="alert">' . $success . '</div>';
         }
         ?>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="row mx-auto row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <?php
             $sql = "SELECT * FROM design ORDER BY design_id ASC";
             $q = mysqli_query($connect, $sql);
             while ($r = mysqli_fetch_array($q)) { ?>
                 <div class="col">
-                    <div class="card h-100 resto-item">
+                    <div class="card mx-auto h-100 resto-item">
                         <img src="<?php echo htmlspecialchars($r['gambar_design']); ?>" class="card-img-top"
                             alt="Desain Pakaian">
                         <div class="card-body resto-details">
-                            <h5 class="card-title"><?php echo htmlspecialchars($r['jenis_pakaian']); ?></h5>
-                            <p class="card-text text-dark opacity-75 text-truncate">
+                            <h5 class="card-title text-truncate"><?php echo htmlspecialchars($r['jenis_pakaian']); ?></h5>
+                            <p class="card-text text-light opacity-75 text-truncate">
                                 <?php echo htmlspecialchars($r['deskripsi_design']); ?>
                             </p>
                             <div class="d-flex justify-content-between mt-3">
@@ -227,8 +228,6 @@ if (isset($_POST['submit'])) {
                 </div>
             <?php } ?>
         </div>
-        <button type="button" class="btn btn-primary mt-4" data-bs-toggle="modal" data-bs-target="#popupInput"
-            data-bs-op="insert">Input</button>
 
         <div class="modal fade" id="popupInput" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -271,6 +270,11 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
+        
+        <div class="add-task" data-bs-toggle="modal" data-bs-target="#popupInput" data-bs-op="insert">
+            <p>+</p>
+        </div>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"

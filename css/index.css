@@ -7,3 +7,18 @@
   border-radius: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
 }
+
+.add-task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px !important;
+  height: 70px !important;
+  background-color: #00D28C !important;
+  font-size: 70px !important;
+  font-weight: 300;
+  text-decoration: none;
+  color: white;
+  line-height: 70px !important;
+}
+

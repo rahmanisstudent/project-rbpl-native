@@ -21,7 +21,7 @@
                 <div class="task blue">Dress Mbak Hani (18 - 28 Juni 2019) - Belum dimulai</div>
             </div>
 
-            <a href="tambah.php"><div class="add-task">+</div></a>
+            <a href="tambah.php" class="add-task"> + </a>
         </section>
     </div>
 
