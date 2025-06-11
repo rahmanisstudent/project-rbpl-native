@@ -1,6 +1,6 @@
 .container {
   color: white;
-  background: #2E3C4E;
+  background: #475581;
   max-width: 500px;
   margin: 40px auto 30px auto;
   padding: 0 0 0 0;
@@ -9,7 +9,7 @@
 }
 
 .add-task {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   width: 70px !important;
@@ -20,5 +20,25 @@
   text-decoration: none;
   color: white;
   line-height: 70px !important;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }
 
+.main h1{
+  text-align: center;
+}
+
+.calendar{
+  background-color: #4D607C;
+}
+
+body {
+  font-family: "Quicksand", sans-serif;
+  background-color: #475581;
+  margin: 0;
+  padding: 0;
+}

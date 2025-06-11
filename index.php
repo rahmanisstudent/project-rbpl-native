@@ -11,7 +11,7 @@
 
     <div class="container">
         <section class="main">
-            <h1 style="text-align: center;">Kalender Pekerjaan Penjahit</h1>
+            <h1>Kalender Pekerjaan Penjahit</h1>
             <div id="calendar"></div>
 
             <div class="task-list">
@@ -36,7 +36,7 @@
                         title: 'Baju dinas Mas Jacobi',
                         start: '2025-06-03',
                         end: '2025-06-08',
-                        color: 'green'
+                        color: 'green' //dirandom aja ga si, asal warnanya sama yg di kalender sm yg di list
                     },
                     {
                         title: 'Seragam batik Ibu Kus',

@@ -69,7 +69,7 @@ body {
 }
 
 .add-task {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   width: 70px !important;
@@ -80,4 +80,10 @@ body {
   text-decoration: none;
   color: white;
   line-height: 70px !important;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
 }

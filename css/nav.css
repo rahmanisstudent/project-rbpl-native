@@ -96,11 +96,6 @@
             font-size: 24px;
             cursor: pointer;
         }
-        #calendar {
-            max-width: 900px;
-            margin: auto;
-            margin-top: 20px;
-        }
         .task-list {
             max-width: 900px;
             margin: auto;
@@ -117,18 +112,3 @@
         .green { background-color: #c8e6c9; }
         .red { background-color: #ffcdd2; }
         .blue { background-color: #bbdefb; }
-        .add-task {
-            display: block;
-            width: 50px;
-            height: 50px;
-            background-color: #007bff;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-            line-height: 50px;
-            border-radius: 50%;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            cursor: pointer;
-        }
