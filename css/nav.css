@@ -85,30 +85,8 @@
                 right: 0;
             }
         }
-        section {
-            padding: 100px 30px;
-        }
         .navbar h1 {
             margin: 0;
             font-size: 25px;
         }
-        .menu-icon {
-            font-size: 24px;
-            cursor: pointer;
-        }
-        .task-list {
-            max-width: 900px;
-            margin: auto;
-            margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .task {
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-        .green { background-color: #c8e6c9; }
-        .red { background-color: #ffcdd2; }
-        .blue { background-color: #bbdefb; }
+

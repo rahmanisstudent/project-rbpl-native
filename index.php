@@ -13,7 +13,8 @@
         <section class="main">
             <h1>Kalender Pekerjaan Penjahit</h1>
             <div id="calendar"></div>
-
+        </section>
+        <section class="list">
             <div class="task-list">
                 <h3>Daftar Pekerjaan</h3>
                 <div class="task green">Baju dinas Mas Jacobi (3 - 8 Juni 2019) - Finishing</div>
