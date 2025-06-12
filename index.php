@@ -1,11 +1,33 @@
+<?php
+include 'koneksi.php';
+
+try {
+    $pdo = new PDO("mysql:host=$hostname;dbname=$database", $username, $password);
+} catch (PDOException $e) {
+    die("Database error: " . $e->getMessage());
+}
+
+// --- Fetch Events ---
+// Make sure your table and column names match your database
+// The column names must match what FullCalendar expects: title, start, end, color
+$sql = "SELECT tanggal_mulai as start, tanggal_selesai as end, CONCAT(jenis_model, ' ', nama_pelanggan) AS title FROM pesanan";
+$stmt = $pdo->query($sql);
+
+$events = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Convert the PHP array into a JSON string
+$events_json = json_encode($events);
+?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalender Pekerjaan</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
     <?php include 'nav.php' ?>
 
@@ -17,41 +39,47 @@
         <section class="list">
             <div class="task-list">
                 <h3>Daftar Pekerjaan</h3>
-                <div class="task green">Baju dinas Mas Jacobi (3 - 8 Juni 2019) - Finishing</div>
-                <div class="task red">Seragam batik Ibu Kus (3 - 8 Juni 2019) - Pemotongan</div>
-                <div class="task blue">Dress Mbak Hani (18 - 28 Juni 2019) - Belum dimulai</div>
-            </div>
+                <?php
+                // Fetch task list from the database
+                $sql = "SELECT jenis_model, nama_pelanggan, tanggal_mulai, tanggal_selesai, status_pengerjaan FROM pesanan ORDER BY tanggal_mulai DESC";
+                $stmt = $pdo->query($sql);
 
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    // Format date
+                    $start = date('j', strtotime($row['tanggal_mulai']));
+                    $end = date('j F Y', strtotime($row['tanggal_selesai']));
+                    $dateRange = $start . ' - ' . $end;
+
+                    // Determine task color based on status
+                    $colorClass = 'blue';
+                    if (stripos($row['status_pengerjaan'], 'Finishing') !== false) {
+                        $colorClass = 'green';
+                    } elseif (stripos($row['status_pengerjaan'], 'Pemotongan') !== false) {
+                        $colorClass = 'red';
+                    }
+                    ?>
+                    <div class="task <?php echo $colorClass; ?>">
+                        <a href="">
+                            <?php echo htmlspecialchars($row['jenis_model']) . ' ' . htmlspecialchars($row['nama_pelanggan']) . ' (' . $dateRange . ') - ' . htmlspecialchars($row['status_pengerjaan']); ?>
+                        </a>
+                    </div>
+                    <?php
+                }
+                ?>
+            </div>
             <a href="tambah.php" class="add-task"> + </a>
         </section>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                height: 480,
-                events: [
-                    {
-                        title: 'Baju dinas Mas Jacobi',
-                        start: '2025-06-03',
-                        end: '2025-06-08',
-                        color: 'green' //dirandom aja ga si, asal warnanya sama yg di kalender sm yg di list
-                    },
-                    {
-                        title: 'Seragam batik Ibu Kus',
-                        start: '2025-06-03',
-                        end: '2025-06-08',
-                        color: 'red'
-                    },
-                    {
-                        title: 'Dress Mbak Hani',
-                        start: '2025-06-18',
-                        end: '2025-06-28',
-                        color: 'blue'
-                    }
-                ]
+                // width: 500,
+                height: 800,
+                // ⬇️ Use PHP to echo the JSON string here ⬇️
+                events: <?php echo $events_json; ?>
             });
             calendar.render();
         });
