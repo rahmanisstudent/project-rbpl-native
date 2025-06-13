@@ -59,22 +59,26 @@ $dataPoints = array(
         }
     </script>
 </head>
+
 <body>
     <?php include 'nav.php'; ?>
 
     <div class="container">
     <h1>Laporan</h1>
     <div class="parent">
+
         <div class="div1">
             <div class="chart">
                 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             </div>
-            </div>
+        </div>
+
         <div class="div2">
             <div class="circle">
                 <p>42<br>Selesai</p>
             </div>
         </div>
+
         <div class="div3">
             <h3>DEADLINE TERDEKAT</h3>
             <div class="wrapper">
@@ -85,45 +89,54 @@ $dataPoints = array(
                     <p>Hari<br>Tersisa</p>
                 </div>
                 <div class="pemilik">
-                    <h4>IS823</h4>
-                    <p>Mas Amba</p>
-                    <p>Kemeja Panjang</p>
+                    <a href="detail.php?id=IS823">
+                        <h4>IS823</h4>
+                        <p>Mas Amba</p>
+                        <p>Kemeja Panjang</p>
+                    </a>
                 </div>
             </div>
         </div>
+
         <div class="div4">
             <h2>Last Order</h2>
             <ul>
-                <li class="item">
-                    <div class="info">
-                        Ibu Kus
-                        <div class="status">
-                            <span class="dot"></span>
-                            <span class="status-text">Pemotongan</span>
+                <a href="detail.php?id=IS823">
+                    <li class="item">
+                        <div class="info">
+                            Ibu Kus
+                            <div class="status">
+                                <span class="dot"></span>
+                                <span class="status-text">Pemotongan</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="date">3 Juni 2025</div>
-                </li>
-                <li class="item">
-                    <div class="info">
-                        Ibu Kus
-                        <div class="status">
-                            <span class="dot"></span>
-                            <span class="status-text">Pemotongan</span>
+                        <div class="date">3 Juni 2025</div>
+                    </li>
+                </a>
+                <a href="detail.php?id=IS824">
+                    <li class="item">
+                        <div class="info">
+                            Ibu Kus
+                            <div class="status">
+                                <span class="dot"></span>
+                                <span class="status-text">Pemotongan</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="date">3 Juni 2025</div>
-                </li>
-                <li class="item">
-                    <div class="info">
-                        Ibu Kus
-                        <div class="status">
-                            <span class="dot"></span>
-                            <span class="status-text">Pemotongan</span>
+                        <div class="date">3 Juni 2025</div>
+                    </li>
+                </a>
+                <a href="detail.php?id=IS825">
+                    <li class="item">
+                        <div class="info">
+                            Ibu Kus
+                            <div class="status">
+                                <span class="dot"></span>
+                                <span class="status-text">Pemotongan</span>
+                            </div>
                         </div>
-                    </div>
-                    <div class="date">3 Juni 2025</div>
-                </li>
+                        <div class="date">3 Juni 2025</div>
+                    </li>
+                </a>
             </ul>
         </div>
     </div>

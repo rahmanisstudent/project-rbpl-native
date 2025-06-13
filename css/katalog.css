@@ -45,6 +45,11 @@
   border-color:#00D28C;
 }
 
+.card-body a{
+  color: white;
+  text-decoration: none;
+}
+
 .card img {
   width: 175px;
   height: 100px;

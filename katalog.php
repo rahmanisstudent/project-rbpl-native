@@ -204,13 +204,16 @@ if (isset($_POST['submit'])) {
             while ($r = mysqli_fetch_array($q)) { ?>
                 <div class="col">
                     <div class="card mx-auto h-100 resto-item">
-                        <img src="<?php echo htmlspecialchars($r['gambar_design']); ?>" class="card-img-top"
-                            alt="Desain Pakaian">
+                        <a href="detail.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
+                            <img src="<?php echo htmlspecialchars($r['gambar_design']); ?>" class="card-img-top"alt="Desain Pakaian">
+                        </a>
                         <div class="card-body resto-details">
-                            <h5 class="card-title text-truncate"><?php echo htmlspecialchars($r['jenis_pakaian']); ?></h5>
-                            <p class="card-text text-light opacity-75 text-truncate">
-                                <?php echo htmlspecialchars($r['deskripsi_design']); ?>
-                            </p>
+                            <a href="detail.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
+                                <h5 class="card-title text-truncate"><?php echo htmlspecialchars($r['jenis_pakaian']); ?></h5>
+                                <p class="card-text text-light opacity-75 text-truncate">
+                                    <?php echo htmlspecialchars($r['deskripsi_design']); ?>
+                                </p>
+                            </a>
                             <div class="d-flex justify-content-between mt-3">
                                 <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#popupInput" data-bs-op="edit"
