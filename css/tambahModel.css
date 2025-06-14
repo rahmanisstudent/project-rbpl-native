@@ -5,6 +5,7 @@
 }
 html,
 body {
+  background-color: #4d607c;
   margin: 0px;
   height: 100%;
 }
@@ -26,7 +27,7 @@ a {
 }
 
 .tambah-design .overlap-wrapper {
-  background-color: #ffffff;
+  background-color: #ec0000;
   width: 375px;
   height: 667px;
 }

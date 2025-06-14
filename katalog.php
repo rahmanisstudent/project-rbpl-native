@@ -204,18 +204,18 @@ if (isset($_POST['submit'])) {
             while ($r = mysqli_fetch_array($q)) { ?>
                 <div class="col">
                     <div class="card mx-auto h-100 resto-item">
-                        <a href="detail.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
+                        <a href="model.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
                             <img src="<?php echo htmlspecialchars($r['gambar_design']); ?>" class="card-img-top"alt="Desain Pakaian">
                         </a>
                         <div class="card-body resto-details">
-                            <a href="detail.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
+                            <a href="model.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
                                 <h5 class="card-title text-truncate"><?php echo htmlspecialchars($r['jenis_pakaian']); ?></h5>
                                 <p class="card-text text-light opacity-75 text-truncate">
                                     <?php echo htmlspecialchars($r['deskripsi_design']); ?>
                                 </p>
                             </a>
                             <div class="d-flex justify-content-between mt-3">
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                <button type="button" id="edit" class="btn btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#popupInput" data-bs-op="edit"
                                     data-bs-id="<?php echo $r['design_id']; ?>"
                                     data-jenis-pakaian="<?php echo htmlspecialchars($r['jenis_pakaian']); ?>"
@@ -223,7 +223,7 @@ if (isset($_POST['submit'])) {
                                     data-gambar-design="<?php echo htmlspecialchars($r['gambar_design']); ?>">
                                     Edit
                                 </button>
-                                <a href="?op=delete&id=<?php echo $r['design_id']; ?>" class="btn btn-danger btn-sm"
+                                <a href="?op=delete&id=<?php echo $r['design_id']; ?>" id="delete" class="btn btn-sm"
                                     onclick="return confirm('Apakah Anda yakin ingin menghapus desain ini?')">Delete</a>
                             </div>
                         </div>

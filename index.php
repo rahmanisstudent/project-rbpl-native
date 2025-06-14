@@ -76,8 +76,8 @@ $events_json = json_encode($events);
             var calendarEl = document.getElementById('calendar');
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                // width: 500,
-                height: 800,
+                width: 500,
+                height: 600,
                 // ⬇️ Use PHP to echo the JSON string here ⬇️
                 events: <?php echo $events_json; ?>
             });

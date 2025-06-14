@@ -51,14 +51,17 @@
 }
 
 .card img {
-  width: 175px;
+  width: 170px;
   height: 100px;
   border-radius: 8px;
 }
 
 @media (max-width: 500px) {
   .col {
-    flex: 1 1 100%; /* Satu kolom untuk layar kecil */
+    max-width: 180px;
+  }
+  .card img {
+    width: 150px;
   }
 }
 
@@ -90,4 +93,23 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+
+.btn{
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 0px;
+  width: 60px;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#delete{
+  background-color: #FF6347;
+}
+
+#edit{
+  background-color: #FFA500;
 }

@@ -41,6 +41,12 @@ $dataPoints = array(
                 labelWrap: true,
                 labelAngle: -45,
                 labelMaxWidth: 50,
+                labelFormatter: function(e) {
+                    if (window.innerWidth < 450) {
+                        return "";
+                    }
+                    return e.label;
+                }
             },
             data: [{
                 type: "column",

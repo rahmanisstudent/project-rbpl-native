@@ -117,7 +117,9 @@ if (!$design) {
                 </div>
             </div>
             <div class="tombol">
-                <a href="index.php" class="batal-link">BATAL</a>
+                <a href="index.php" style="text-decoration:none;">
+                    <button type="button" class="kembali">KEMBALI</button>
+                </a>
                 <button type="submit" class="simpan">SIMPAN</button>
             </div>
         </form>

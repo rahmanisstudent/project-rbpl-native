@@ -86,18 +86,15 @@ body {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 50px;
-}
-
-.tombol a{
-  text-decoration: none;
   color: white;
-  font-weight: bolder;
+  font-weight: bold;
+  width: 100px;
 }
 
 .simpan{
     background-color: #08ffad;
 }
 
-.batal{
+.kembali{
     background-color: #6776a8;
 }
