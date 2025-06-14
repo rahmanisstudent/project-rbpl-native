@@ -62,6 +62,22 @@ body {
     box-shadow: inset 0 0 0 10px #6776a8;
 }
 
+@media (max-width: 480px) {
+    .circle {
+        width: 100%;
+        height: 248px;
+        border-radius: 10px;
+        font-size: 16px;
+        border-width: 0;
+        box-shadow: none;
+        background-color: #ffffff;
+        color: #08ffad;
+        margin: 10px 10px;
+        font-weight: 600;
+        font-size: 25px;
+    }
+}
+
 .div3 {
     display: flex;
     flex-direction: column;
@@ -113,6 +129,34 @@ body {
 .pemilik h4{
     font-size: 14px;
     font-weight: 900;
+}
+
+@media (max-width: 480px) {
+    .hari {
+        font-size: 50px;
+    }
+    .wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .wrapper p {
+        text-align: center;
+        font-size: 16px;
+    }
+    .pemilik {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .pemilik h4 {
+        text-align: center;
+    }
+    .wrapper{
+        gap: 0;
+    }
 }
 
 .div4 {
