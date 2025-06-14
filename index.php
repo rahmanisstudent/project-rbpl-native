@@ -41,7 +41,7 @@ $events_json = json_encode($events);
                 <h3>Daftar Pekerjaan</h3>
                 <?php
                 // Fetch task list from the database
-                $sql = "SELECT jenis_model, nama_pelanggan, tanggal_mulai, tanggal_selesai, status_pengerjaan FROM pesanan ORDER BY tanggal_mulai DESC";
+                $sql = "SELECT pesanan_id, jenis_model, nama_pelanggan, tanggal_mulai, tanggal_selesai, status_pengerjaan FROM pesanan ORDER BY tanggal_mulai DESC";
                 $stmt = $pdo->query($sql);
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -59,7 +59,7 @@ $events_json = json_encode($events);
                     }
                     ?>
                     <div class="task <?php echo $colorClass; ?>">
-                        <a href="">
+                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>">
                             <?php echo htmlspecialchars($row['jenis_model']) . ' ' . htmlspecialchars($row['nama_pelanggan']) . ' (' . $dateRange . ') - ' . htmlspecialchars($row['status_pengerjaan']); ?>
                         </a>
                     </div>
