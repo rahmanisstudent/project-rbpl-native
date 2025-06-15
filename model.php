@@ -13,7 +13,8 @@ $stmt->execute();
 $result = $stmt->get_result();
 $model = $result->fetch_assoc();
 if (!$model) {
-    die("Model not found.");
+    echo "<script>alert('Model not found.'); window.location.href='katalog.php';</script>";
+    exit;
 }
 ?>
 <!DOCTYPE html>
@@ -33,21 +34,31 @@ if (!$model) {
 
     <div class="container">
         <div class="judul">
-            <h3>Model Pakaian</h3>
+            <h5>Model Pakaian</h5>
             <h1>
                 <?php echo htmlspecialchars($model['jenis_pakaian']); ?>
             </h1>
         </div>
+        <div class="next-prev">
+            <a href="model.php?id=<?php echo max(1, $id - 1); ?>" class="previous">&laquo;</a>
+            <a href="model.php?id=<?php echo $id + 1; ?>" class="next">&raquo;</a>
+        </div>
         <div class="gambar">
             <img src="<?php echo htmlspecialchars($model['gambar_design']); ?>" alt="Dress Pesta" class="model-image">
         </div>
-        <div class="catatan">
-            <H4>Deskripsi Design:</H4>
-            <p class="deskripsi">
+        <div class="templateUkuran">
+            <h5>Template Ukuran:</h5>
+        </div>
+        <div class="deskripsi">
+            <h5>Deskripsi Design:</h5>
+            <p>
                 <?php echo htmlspecialchars($model['deskripsi_design']); ?>
             </p>
         </div>
     </div>
+
+    <!-- Bootstrap JS (wajib untuk modal) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

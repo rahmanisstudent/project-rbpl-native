@@ -1,14 +1,3 @@
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
-            padding: 20px;
-        }
 
         .container {
             max-width: 400px;
@@ -27,11 +16,12 @@
             width: 100%;
             padding: 15px;
             border: none;
-            background: #4a5568;
+            background: #08ffad;
             color: white;
             font-size: 16px;
             cursor: pointer;
             position: relative;
+            border-radius: 8px;
         }
 
         .date-input:after {
@@ -63,20 +53,6 @@
             padding: 15px;
             background: #4a5568;
             color: white;
-        }
-
-        .nav-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 3px;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
         }
 
         .month-year {

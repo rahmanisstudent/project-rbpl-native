@@ -115,102 +115,101 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sistem Informasi Penjahit</title>
-
-    <link rel="stylesheet" href="css/tambah.css" />
     <link rel="stylesheet" href="css/nyoba.css">
+    <link rel="stylesheet" href="css/tambah.css" />
 </head>
 
 <body>
     <?php include 'nav.php' ?>
-    <form action="" method="POST">
-        <h1>Tambah Data</h1>
-        <ul>
-            <li>
-                <label for="nama-pemesan">
-                    Nama Pemesan
-                    <input type="text" id="nama-pemesan" name="nama_pelanggan" placeholder="Tuliskan Nama Pelanggan"
-                        autocomplete="off" value="<?php echo $nama_pelanggan; ?>" />
-                </label>
-            </li>
-            <li>
-                <label for="nomor-telepon">
-                    Nomor Telepon
-                    <input type="number" id="nomor-telepon" name="nomor_telepon" placeholder="Tuliskan Nomor Telepon"
-                        autocomplete="off" value="<?php echo $nomor_telepon; ?>" />
-                </label>
-            </li>
-            <li>
-                <label for="alamat">
-                    Alamat
-                    <input type="text" id="alamat" name="alamat" placeholder="Tuliskan Alamat" autocomplete="off"
-                        value="<?php echo $alamat; ?>" />
-                </label>
-            </li>
-            <li>
-                <label for="jenis-model">
-                    Jenis Model
-                    <select id="jenis-model" name="jenis_model" aria-label="Jenis Model">
-                        <?php
-                        $query = "SELECT jenis_pakaian FROM design";
-                        $result = mysqli_query($koneksi, $query);
-                        while ($row = mysqli_fetch_assoc($result)) { ?>
-                            <option value="<?php echo htmlspecialchars($row['jenis_pakaian']); ?>" <?php if ($jenis_model == $row['jenis_pakaian'])
-                                   echo "selected"; ?>>
-                                <?php echo htmlspecialchars($row['jenis_pakaian']); ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </label>
-            </li>
-            <li>
-                <label for="quantity">
-                    Quantity
-                    <input type="number" id="quantity" name="quantity" class="small" autocomplete="off"
-                        value="<?php echo $quantity; ?>" />
-                </label>
-            </li>
-            <li>
-                <label for="opsi-pengambilan">
-                    Opsi Pengambilan
-                    <select id="opsi-pengambilan" name="opsi_pengambilan" aria-label="Opsi Pengambilan">
-                        <option value="Ambil di tempat" <?php if ($opsi_pengambilan == "Ambil di tempat")
-                            echo "selected"; ?>>Ambil di
-                            tempat</option>
-                        <option value="Pesanan diantar" <?php if ($opsi_pengambilan == "Pesanan diantar")
-                            echo "selected"; ?>>Pesanan
-                            diantar</option>
-                    </select>
-                </label>
-            </li>
-            <li>
-                <label class="ukuran-label" for="ukuran-checkbox">
-                    <a href="javascript:void(0);" onclick="showPopup()"><span class="ukuran-icon">+</span></a>
-                    Ukuran <sup>(cm)</sup>
-                </label>
-                <div class="ukuran-inputs">
-                    <ul id="ukuran-list">
-                    </ul>
-                </div>
-            </li>
-            <li>
-                <?php include 'pilih_tanggal.php'; ?>
-            </li>
-            <li>
-                <label for="catatan" id="label-catatan">
-                    Catatan
-                    <textarea id="catatan" name="catatan" rows="3" autocomplete="off"><?php echo $catatan; ?></textarea>
-                </label>
-            </li>
-        </ul>
-        <button type="submit" class="sub-but">
-            Submit
-        </button>
-    </form>
+    <div class="container">
+        <form action="" method="POST">
+            <h1>Tambah Data</h1>
+            <ul>
+                <li>
+                    <label for="nama-pemesan">
+                        Nama Pemesan
+                        <input type="text" id="nama-pemesan" name="nama_pelanggan" placeholder="Tuliskan Nama Pelanggan"
+                            autocomplete="off" value="<?php echo $nama_pelanggan; ?>" />
+                    </label>
+                </li>
+                <li>
+                    <label for="nomor-telepon">
+                        Nomor Telepon
+                        <input type="number" id="nomor-telepon" name="nomor_telepon" placeholder="Tuliskan Nomor Telp."
+                            autocomplete="off" value="<?php echo $nomor_telepon; ?>" />
+                    </label>
+                </li>
+                <li>
+                    <label for="alamat">
+                        Alamat
+                        <input type="text" id="alamat" name="alamat" placeholder="Tuliskan Alamat" autocomplete="off"
+                            value="<?php echo $alamat; ?>" />
+                    </label>
+                </li>
+                <li>
+                    <label for="jenis-model">
+                        Jenis Model
+                        <select id="jenis-model" name="jenis_model" aria-label="Jenis Model">
+                            <?php
+                            $query = "SELECT jenis_pakaian FROM design";
+                            $result = mysqli_query($koneksi, $query);
+                            while ($row = mysqli_fetch_assoc($result)) { ?>
+                                <option value="<?php echo htmlspecialchars($row['jenis_pakaian']); ?>" <?php if ($jenis_model == $row['jenis_pakaian'])
+                                    echo "selected"; ?>>
+                                    <?php echo htmlspecialchars($row['jenis_pakaian']); ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <label for="quantity">
+                        Quantity
+                        <input placeholder="Qty." type="number" id="quantity" name="quantity" class="small" autocomplete="off"
+                            value="<?php echo $quantity; ?>" />
+                    </label>
+                </li>
+                <li>
+                    <label for="opsi-pengambilan">
+                        Opsi Pengambilan
+                        <select id="opsi-pengambilan" name="opsi_pengambilan" aria-label="Opsi Pengambilan">
+                            <option value="Ambil di tempat" <?php if ($opsi_pengambilan == "Ambil di tempat")
+                                echo "selected"; ?>>Ambil di
+                                tempat</option>
+                            <option value="Pesanan diantar" <?php if ($opsi_pengambilan == "Pesanan diantar")
+                                echo "selected"; ?>>Pesanan
+                                diantar</option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <label class="ukuran-label" for="ukuran-checkbox">
+                        <a href="javascript:void(0);" onclick="showPopup()"><span class="ukuran-icon">+</span></a>
+                        Ukuran <sup>(cm)</sup>
+                    </label>
+                    <div class="ukuran-inputs">
+                        <ul id="ukuran-list">
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <?php include 'pilih_tanggal.php'; ?>
+                </li>
+                <li>
+                    <label for="catatan" id="label-catatan">
+                        Catatan
+                        <textarea placeholder="Tuliskan catatan dari pesanan ini" id="catatan" name="catatan" rows="3" autocomplete="off"><?php echo $catatan; ?></textarea>
+                    </label>
+                </li>
+            </ul>
+            <button type="submit" class="sub-but">
+                Submit
+            </button>
+        </form>
+    </div>
 
     <div id="popup-ukuran"
         style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; justify-content:center; align-items:center;">

@@ -1,71 +1,9 @@
 
-/* General page styles */
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #0048ff;
-  margin: 0;
-  padding: 0;
-  color: #222;
-}
-
-/* Container for the form */
-.form-container {
-  background: #fff;
-  max-width: 420px;
-  margin: 40px auto;
-  padding: 32px 28px;
-  border-radius: 10px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-}
-
-/* Form title */
-.form-container h2 {
-  margin-top: 0;
-  margin-bottom: 24px;
-  font-size: 1.7rem;
-  color: #2d3a4b;
-  text-align: center;
-  letter-spacing: 1px;
-}
-
-/* Form fields */
-.form-group {
-  margin-bottom: 18px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 7px;
-  font-weight: 500;
-  color: #3a4a5d;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  padding: 10px 12px;
-  border: 1px solid #cfd8dc;
-  border-radius: 5px;
-  font-size: 1rem;
-  background: #f9fafb;
-  transition: border-color 0.2s;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #4f8cff;
-  outline: none;
-  background: #fff;
-}
-
 /* Submit button */
 button[type="submit"],
 .btn-submit {
   width: 100%;
   padding: 12px 0;
-  background: #4f8cff;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -75,16 +13,11 @@ button[type="submit"],
   transition: background 0.2s;
 }
 
-button[type="submit"]:hover,
-.btn-submit:hover {
-  background: #2563eb;
-}
-
 .sub-but{
   margin-top: 24px; 
   width: 100%; 
   padding: 12px; 
-  background: #4a5568 !important; 
+  background: #08ffad !important; 
   color: #fff; 
   border: none; 
   border-radius: 4px; 
@@ -92,25 +25,27 @@ button[type="submit"]:hover,
   cursor: pointer;
 }
 
-/* Responsive */
-@media (max-width: 500px) {
-  .form-container {
-    padding: 18px 8px;
-  }
-}
-
 form {
-  background: #fff;
+  background-color: #475581;
   max-width: 500px;
-  margin: 40px auto 0 auto;
   padding: 32px 32px 24px 32px;
   border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  
+}
+
+.container{
+  background-color: #475581;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+  margin: 100px auto 40px auto;
+}
+
+body {
+  color: white;
+  background-color: #475581;
 }
 
 h1 {
   text-align: center;
-  /* color: #2d3a4a; */
   margin-bottom: 28px;
   font-size: 2rem;
 }
@@ -127,9 +62,25 @@ li {
 
 label {
   display: block;
-  color: #2d3a4a;
+  color: white;
   font-weight: 500;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+label[for="quantity"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+label[for="quantity"] input.small {
+  margin-left: 16px;
+  width: 60px;
+  min-width: 0;
+  flex-shrink: 0;
+  text-align: center;
+  border-radius: 8px;
+  border-style: none;
 }
 
 input[type="text"],
@@ -137,7 +88,7 @@ select,
 textarea {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #cfd8dc;
+  border: none;
   border-radius: 6px;
   font-size: 1rem;
   background: #f9fbfd;
@@ -146,22 +97,36 @@ textarea {
   box-sizing: border-box;
 }
 
-input[type="text"]:focus,
-select:focus,
-textarea:focus {
-  border-color: #5b9bd5;
-  outline: none;
-  background: #fff;
+input.small {
+  width: 40px;
+  height: 30px;
+  display: inline-block;
 }
 
-input.small {
-  width: 120px;
-  display: inline-block;
+label[for="nomor-telepon"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+label[for="nomor-telepon"] input[type="number"] {
+  margin-left: 16px;
+  width: 200px;
+  min-width: 0;
+  height: 30px;
+  flex-shrink: 0;
+  text-align: right;
+  border-radius: 8px;
+  border-style: none;
+  background: #f9fbfd;
+  font-size: 1rem;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
 .ukuran-label {
   font-size: 1rem;
-  color: #2d3a4a;
+  color: #ffffff;
   font-weight: 600;
   margin-bottom: 8px;
   display: flex;
@@ -170,7 +135,7 @@ input.small {
 
 .ukuran-icon {
   display: inline-block;
-  background: #5b9bd5;
+  background: #08ffad;
   color: #fff;
   border-radius: 50%;
   width: 22px;
@@ -210,10 +175,6 @@ option[value=""][disabled] {
 }
 
 @media (max-width: 600px) {
-  form {
-    padding: 18px 8px;
-    max-width: 98vw;
-  }
   .ukuran-inputs ul {
     flex-direction: column;
     gap: 0;
@@ -221,4 +182,24 @@ option[value=""][disabled] {
   .ukuran-inputs li {
     min-width: 100%;
   }
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  color: white;
+  background-color: #6776a8;
+}
+
+input#nomor-telepon {
+  color: white;
+  background-color: #6776a8;
+}
+
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: #fff !important;
+  opacity: 1;
 }
