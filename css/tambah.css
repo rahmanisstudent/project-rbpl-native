@@ -115,7 +115,7 @@ label[for="nomor-telepon"] input[type="number"] {
   min-width: 0;
   height: 30px;
   flex-shrink: 0;
-  text-align: right;
+  text-align: left;
   border-radius: 8px;
   border-style: none;
   background: #f9fbfd;
