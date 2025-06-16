@@ -1,3 +1,23 @@
+<?php
+$orders_for_js = [];
+
+$sql = "SELECT * FROM pesanan";
+$result = mysqli_query($koneksi, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $orders_for_js[] = [
+            'id' => $row['pesanan_id'],
+            'customer' => $row['nama_pelanggan'],
+            'type' => $row['jenis_model'],
+            'color' => $row['Warna'],
+            'startDate' => $row['tanggal_mulai'],
+            'endDate' => $row['tanggal_selesai']
+        ];
+    }
+}
+?>
+
 <input type="hidden" id="tanggalMulaiInput" name="tanggal_mulai">
 <input type="hidden" id="tanggalSelesaiInput" name="tanggal_selesai">
 
@@ -77,8 +97,7 @@
 </div>
 
 <script>
-    // Enclose all calendar-related variables and functions in an IIFE
-    // Immediately Invoked Function Expression to prevent global conflicts.
+
     (function () {
         let currentCalendarDate = new Date(2025, 5, 1); // Default ke Juni 2025
         let selectedStartDate = null;
@@ -86,16 +105,7 @@
         let tempSelectedDate = null;
         let activeCalendarInstance = ''; // Stores 'startCalendar' or 'endCalendar'
 
-        const orderData = [
-            { id: 1, customer: 'Mas Amba', type: 'Kemeja', color: 'red', startDate: '2025-06-01', endDate: '2025-06-11' },
-            { id: 2, customer: 'Bu Sari', type: 'Dress', color: 'blue', startDate: '2025-06-03', endDate: '2025-06-08' },
-            { id: 3, customer: 'Pak Budi', type: 'Celana', color: 'green', startDate: '2025-06-10', endDate: '2025-06-15' },
-            { id: 4, customer: 'Mbak Rina', type: 'Blouse', color: 'yellow', startDate: '2025-06-12', endDate: '2025-06-18' },
-            { id: 5, customer: 'Mas Doni', type: 'Jaket', color: 'purple', startDate: '2025-06-16', endDate: '2025-06-22' },
-            { id: 6, customer: 'Bu Maya', type: 'Rok', color: 'orange', startDate: '2025-06-20', endDate: '2025-06-25' },
-            { id: 7, customer: 'Pak Tono', type: 'Kemeja', color: 'pink', startDate: '2025-06-24', endDate: '2025-06-30' },
-            { id: 8, customer: 'Mbak Lina', type: 'Dress', color: 'cyan', startDate: '2025-06-28', endDate: '2025-07-03' }
-        ];
+        const orderData = <?php echo json_encode($orders_for_js); ?>;
 
         const monthNames = [
             'Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun',
@@ -221,7 +231,8 @@
                             // Check if startDay and endDay exist before accessing properties
                             if (startDay && endDay) {
                                 const line = document.createElement('div');
-                                line.className = `order-line ${order.color}`;
+                                line.className = `order-line`;
+                                line.style.backgroundColor = '#' + order.color;       //tadi ini yang diganti
                                 line.title = `${order.customer} - ${order.type}`;
 
                                 const startOffset = startDay.offsetLeft;
@@ -310,7 +321,7 @@
                         'ongoing': 'Dikerjakan'
                     };
                     return `
-                        <div class="order-item ${order.color}">
+                        <div class="order-item" style="border-left-color: #${order.color};">
                             <div class="order-customer">${order.customer}</div>
                             <div class="order-type">${order.type}</div>
                             <div class="order-duration">

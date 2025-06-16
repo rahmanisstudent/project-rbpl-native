@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host = "localhost";
 $user = "root";
 $pass = "";
@@ -92,9 +93,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $status_pengerjaan
             );
             if (mysqli_stmt_execute($stmt)) {
-                $success = "Data pesanan berhasil ditambahkan.";
-                // Reset form value
-                $nama_pelanggan = $nomor_telepon = $alamat = $jenis_model = $quantity = $opsi_pengambilan = $catatan = $tanggal_mulai = $tanggal_selesai = "";
+                $_SESSION['success_message'] = "Data berhasil ditambahkan!";
+                header("Location: index.php");
+                exit();
             } else {
                 $error = "Gagal menambah data: " . mysqli_error($koneksi);
             }
@@ -105,13 +106,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-<?php if ($success): ?>
-    <div class="success"><?php echo $success; ?></div>
-<?php endif; ?>
-<?php if ($error): ?>
-    <div class="error"><?php echo $error; ?></div>
-<?php endif; ?>
+<?php
+if ($error) {
+    echo "<script>alert('Error: $error');</script>";
+}
+?>
 
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -158,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $result = mysqli_query($koneksi, $query);
                             while ($row = mysqli_fetch_assoc($result)) { ?>
                                 <option value="<?php echo htmlspecialchars($row['jenis_pakaian']); ?>" <?php if ($jenis_model == $row['jenis_pakaian'])
-                                    echo "selected"; ?>>
+                                       echo "selected"; ?>>
                                     <?php echo htmlspecialchars($row['jenis_pakaian']); ?>
                                 </option>
                             <?php } ?>
@@ -168,8 +169,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li>
                     <label for="quantity">
                         Quantity
-                        <input placeholder="Qty." type="number" id="quantity" name="quantity" class="small" autocomplete="off"
-                            value="<?php echo $quantity; ?>" />
+                        <input placeholder="Qty." type="number" id="quantity" name="quantity" class="small"
+                            autocomplete="off" value="<?php echo $quantity; ?>" />
                     </label>
                 </li>
                 <li>
@@ -201,7 +202,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <li>
                     <label for="catatan" id="label-catatan">
                         Catatan
-                        <textarea placeholder="Tuliskan catatan dari pesanan ini" id="catatan" name="catatan" rows="3" autocomplete="off"><?php echo $catatan; ?></textarea>
+                        <textarea placeholder="Tuliskan catatan dari pesanan ini" id="catatan" name="catatan" rows="3"
+                            autocomplete="off"><?php echo $catatan; ?></textarea>
                     </label>
                 </li>
             </ul>

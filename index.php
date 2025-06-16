@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'koneksi.php';
 
 try {
@@ -34,6 +35,11 @@ $events_json = json_encode($events);
     <div class="container">
         <section class="main">
             <h1>Kalender Pekerjaan Penjahit</h1>
+            <?php if (isset($_SESSION['success_message'])) {
+                echo '<div class="success">' . htmlspecialchars($_SESSION['success_message']) . '</div>';
+                unset($_SESSION['success_message']);
+            }
+            ?>
             <div id="calendar"></div>
         </section>
         <section class="list">
@@ -41,7 +47,7 @@ $events_json = json_encode($events);
                 <h3>Daftar Pekerjaan</h3>
                 <?php
                 // Fetch task list from the database
-                $sql = "SELECT pesanan_id, jenis_model, nama_pelanggan, tanggal_mulai, tanggal_selesai, status_pengerjaan FROM pesanan ORDER BY tanggal_mulai DESC";
+                $sql = "SELECT pesanan_id, jenis_model, nama_pelanggan, tanggal_mulai, tanggal_selesai, status_pengerjaan, Warna FROM pesanan ORDER BY tanggal_mulai ASC";
                 $stmt = $pdo->query($sql);
 
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -51,15 +57,16 @@ $events_json = json_encode($events);
                     $dateRange = $start . ' - ' . $end;
 
                     // Determine task color based on status
-                    $colorClass = 'blue';
-                    if (stripos($row['status_pengerjaan'], 'Finishing') !== false) {
-                        $colorClass = 'green';
-                    } elseif (stripos($row['status_pengerjaan'], 'Pemotongan') !== false) {
-                        $colorClass = 'red';
-                    }
+                    // $colorClass = 'blue';
+                    // if (stripos($row['status_pengerjaan'], 'Finishing') !== false) {
+                    //     $colorClass = 'green';
+                    // } elseif (stripos($row['status_pengerjaan'], 'Pemotongan') !== false) {
+                    //     $colorClass = 'red';
+                    // }
                     ?>
-                    <div class="task <?php echo $colorClass; ?>">
-                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>">
+                    <div class="task" style="background-color: #<?php echo htmlspecialchars($row['Warna']); ?>">
+                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>"
+                            style="text-decoration: none;">
                             <?php echo htmlspecialchars($row['jenis_model']) . ' ' . htmlspecialchars($row['nama_pelanggan']) . ' (' . $dateRange . ') - ' . htmlspecialchars($row['status_pengerjaan']); ?>
                         </a>
                     </div>
@@ -77,7 +84,7 @@ $events_json = json_encode($events);
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
                 width: 500,
-                height: 600,
+                height: 550,
                 // ⬇️ Use PHP to echo the JSON string here ⬇️
                 events: <?php echo $events_json; ?>
             });

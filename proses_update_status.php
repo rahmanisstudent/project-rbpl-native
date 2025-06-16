@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Arahkan kembali pengguna ke halaman detail
-    header("Location: detail.php?id=" . $pesanan_id);
+    header("Location: index.php");
     exit();
 
 } else {
