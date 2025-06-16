@@ -98,7 +98,8 @@ if (!$design) {
                 </div>
                 <div class="div9">
                     <div class="kotakan">
-                        <a onclick="alert('Pop-up detail pakaian akan muncul di sini.')">
+                        <a href="javascript:void(0);" onclick="showPopupDetailPakaian()">
+
                             <h3 class="detail-pakaian">Detail Pakaian</h3>
                         </a>
                     </div>
@@ -124,6 +125,59 @@ if (!$design) {
             </div>
         </form>
     </div>
-</body>
 
+    <?php
+    // Ambil data design terkait pesanan
+    $designData = null;
+    if (!empty($design['jenis_model'])) {
+        // 'jenis_model' di pesanan adalah foreign key ke design.jenis_pakaian
+        $sqlDesign = "SELECT * FROM design WHERE jenis_pakaian = ?";
+        $stmtDesign = $pdo->prepare($sqlDesign);
+        $stmtDesign->execute([$design['jenis_model']]);
+        $designData = $stmtDesign->fetch(PDO::FETCH_ASSOC);
+    }
+    ?>
+    <div id="popup-detail" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; justify-content:center; align-items:center;">
+        <div class="popup-content">
+            <span class="close" onclick="closePopupDetailPakaian()">&times;</span>
+            <h2>Detail Pakaian</h2>
+            <div class="detail-pakaian-content">
+                <?php if ($designData): ?>
+                    <img src="<?php echo htmlspecialchars($designData['gambar_design']); ?>" alt="Gambar Pakaian"
+                        class="pakaian-image">
+                    <div class="pakaian-info">
+                        <h3><?php echo htmlspecialchars($designData['jenis_pakaian']); ?></h3>
+                        <p><?php echo nl2br(htmlspecialchars($designData['deskripsi_design'])); ?></p>
+                        <h3>Ukuran</h3>
+                        <ul>
+                            <?php
+                            if (isset($designData['ukuran']) && !empty($designData['ukuran'])) {
+                                $ukuranList = explode(',', $designData['ukuran']);
+                                foreach ($ukuranList as $ukuran) {
+                                    // Hilangkan spasi di awal/akhir dan tampilkan
+                                    echo '<li>' . htmlspecialchars(trim($ukuran)) . '</li>';
+                                }
+                            } else {
+                                echo '<li>Tidak ada data ukuran.</li>';
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <p>Data design tidak ditemukan.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPopupDetailPakaian() {
+            document.getElementById('popup-detail').style.display = 'flex';
+        }
+
+        function closePopupDetailPakaian() {
+            document.getElementById('popup-detail').style.display = 'none';
+        }
+    </script>
+</body>
 </html>
