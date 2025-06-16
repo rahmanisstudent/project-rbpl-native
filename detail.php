@@ -84,6 +84,12 @@ if (!$design) {
                 <div class="div6">
                     <h3><?php echo htmlspecialchars($design['nomor_telepon']); ?></h3>
                 </div>
+                <div class="div5ii">
+                    <label for="Quantity">Quantity</label>
+                </div>
+                <div class="div6ii">
+                    <h3><?php echo htmlspecialchars($design['quantity']); ?></h3>
+                </div>
                 <div class="div7">
                     <label for="tanggal pemesanan">Tanggal Mulai</label>
                     <div class="kotakan">
@@ -98,11 +104,24 @@ if (!$design) {
                 </div>
                 <div class="div9">
                     <div class="kotakan">
-                        <a href="javascript:void(0);" onclick="showPopupDetailPakaian()">
-
+                        <a style="text-decoration: none;" href="javascript:void(0);" onclick="showPopupDetailPakaian()">
                             <h3 class="detail-pakaian">Detail Pakaian</h3>
                         </a>
                     </div>
+                </div>
+                <div class="div3ii">
+                    <label for="pengambilan">Pengambilan</label>
+                </div>
+                <div class="div4ii">
+                    <select id="opsi_pengambilan" name="opsi_pengambilan">
+                        <option value="Pesanan diantar" <?php if ($design['opsi_pengambilan'] == 'Pesanan diantar')
+                            echo 'selected'; ?>>Pesanan diantar
+                        </option>
+                        <option value="Ambil di tempat" <?php if ($design['opsi_pengambilan'] == 'Ambil di tempat')
+                            echo 'selected'; ?>>
+                            Ambil di tempat
+                        </option>
+                    </select>
                 </div>
                 <div class="div10">
                     <label for="alamat">Alamat</label>
@@ -147,17 +166,49 @@ if (!$design) {
                         class="pakaian-image">
                     <div class="pakaian-info">
                         <h3><?php echo htmlspecialchars($designData['jenis_pakaian']); ?></h3>
-                        <p><?php echo nl2br(htmlspecialchars($designData['deskripsi_design'])); ?></p>
+                        <p style="word-break: break-word; text-align: justify;">
+                            <?php echo nl2br(htmlspecialchars($designData['deskripsi_design'])); ?></p>
                         <h3>Ukuran</h3>
                         <ul>
                             <?php
                             if (isset($design['ukuran']) && !empty($design['ukuran'])) {
+                                // Asumsi format: "Panjang Tangan:60,Panjang Kaki:90,Lingkar Dada:100"
                                 $ukuranList = explode(',', $design['ukuran']);
-                                foreach ($ukuranList as $ukuran) {
-                                    echo '<li>' . htmlspecialchars(trim($ukuran)) . '</li>';
+                                $jenisUkuran = [];
+                                $besarUkuran = [];
+
+                                foreach ($ukuranList as $item) {
+                                    $parts = explode(':', $item, 2);
+                                    if (count($parts) == 2) {
+                                        $jenis = trim($parts[0]);
+                                        $besar = trim($parts[1]);
+                                        $jenisUkuran[] = $jenis;
+                                        $besarUkuran[] = $besar;
+                                    }
+                                }
+                                if (count($jenisUkuran) > 0) {
+                                    echo '<div style="display:flex; justify-content:space-between; align-items:flex-start;">';
+                                    // Jenis ukuran di kiri
+                                    echo '<div>';
+                                    echo '<ul style="list-style:none;">';
+                                    foreach ($jenisUkuran as $jenis) {
+                                        echo '<li>' . htmlspecialchars($jenis) . '</li>';
+                                    }
+                                    echo '</ul></div>';
+
+                                    // Besar ukuran di kanan
+                                    echo '<div style="text-align:right;">';
+                                    echo '<ul style="list-style:none;">';
+                                    foreach ($besarUkuran as $besar) {
+                                        echo '<li>' . htmlspecialchars($besar) . ' <span style="font-size:smaller;">cm</span></li>';
+                                    }
+                                    echo '</ul></div>';
+                                    echo '</div>';
+                                } else {
+                                    echo '<p>Tidak ada data ukuran.</p>';
                                 }
                             } else {
-                                echo '<li>Tidak ada data ukuran.</li>';
+                                echo '<p>Tidak ada data ukuran.</p>';
                             }
                             ?>
                         </ul>

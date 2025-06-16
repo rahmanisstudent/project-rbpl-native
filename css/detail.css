@@ -14,11 +14,15 @@
 .div4 { grid-area: 2 / 2 / 3 / 3; }
 .div5 { grid-area: 3 / 1 / 4 / 2; }
 .div6 { grid-area: 3 / 2 / 4 / 3; }
-.div7 { grid-area: 4 / 1 / 5 / 2; }
-.div8 { grid-area: 4 / 2 / 5 / 3; }
-.div9 { grid-area: 5 / 1 / 6 / 3; }
-.div10 { grid-area: 6 / 1 / 7 / 3; }
-.div11 { grid-area: 7 / 1 / 8 / 3; }
+.div5ii { grid-area: 4 / 1 / 5 / 2; }
+.div6ii { grid-area: 4 / 2 / 5 / 3; }
+.div7 { grid-area: 5 / 1 / 6 / 2; }
+.div8 { grid-area: 5 / 2 / 6 / 3; }
+.div9 { grid-area: 6 / 1 / 7 / 3; }
+.div3ii { grid-area: 7 / 1 / 8 / 2; }
+.div4ii { grid-area: 7 / 2 / 8 / 3; }
+.div10 { grid-area: 8 / 1 / 9 / 3; }
+.div11 { grid-area: 9 / 1 / 10 / 3; }
 
 .container {
   color: white;
@@ -45,6 +49,8 @@
 
 .detail-pakaian{
   cursor: pointer;
+  text-decoration: none;
+  color: white;
 }
 
 .kotakan p{
@@ -58,7 +64,7 @@ label, select, h3 {
 
 select {
   padding: 0px 0px 0px 15px;
-  height: 25px; 
+  height: 30px; 
   width: 200px;
   color: rgb(255, 255, 255);
   background-color: #6776a8;
@@ -110,15 +116,13 @@ body {
   height: auto;
   margin: 20px auto;
   position: relative;
-
+  padding-bottom: 40px;
 }
 
 .detail-pakaian-content img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
-  margin-bottom: 20px;
-
 }
 
 .popup-content h2 {
@@ -135,5 +139,11 @@ body {
 }
 
 .pakaian-info{
-  margin-left: 20px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.pakaian-info h3{
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
