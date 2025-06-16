@@ -64,10 +64,28 @@ $events_json = json_encode($events);
                     //     $colorClass = 'red';
                     // }
                     ?>
-                    <div class="task" style="background-color: #<?php echo htmlspecialchars($row['Warna']); ?>">
-                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>"
-                            style="text-decoration: none;">
-                            <?php echo htmlspecialchars($row['jenis_model']) . ' ' . htmlspecialchars($row['nama_pelanggan']) . ' (' . $dateRange . ') - ' . htmlspecialchars($row['status_pengerjaan']); ?>
+                    <div class="task">
+                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>" style="text-decoration: none;">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="display: flex; align-items: center;">
+                                    <div class="status" style="margin-right: 10px;">
+                                        <span class="dot" style="color: #<?php echo htmlspecialchars($row['Warna']); ?>;">&#9679</span>
+                                    </div>
+                                    <div class="isiKiri">
+                                        <h3 class="judulPesanan">
+                                            <?php echo htmlspecialchars($row['jenis_model']) . ' ' . htmlspecialchars($row['nama_pelanggan']); ?>
+                                        </h3>
+                                        <p class="tanggal">
+                                            <?php echo htmlspecialchars($dateRange); ?>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="isiKanan">
+                                    <p class="statusPengerjaan">
+                                        <?php echo htmlspecialchars($row['status_pengerjaan']); ?>
+                                    </p>
+                                </div>
+                            </div>
                         </a>
                     </div>
                     <?php
