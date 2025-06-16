@@ -198,8 +198,7 @@ if ($error) {
                         Ukuran <sup>(cm)</sup>
                     </label>
                     <div class="ukuran-inputs">
-                        <ul id="ukuran-list">
-                        </ul>
+                        <ul id="ukuran-list"></ul>
                     </div>
                 </li>
                 <li>

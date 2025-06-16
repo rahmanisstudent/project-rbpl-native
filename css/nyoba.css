@@ -4,7 +4,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
@@ -37,7 +37,7 @@
             top: 100%;
             left: 0;
             right: 0;
-            background: #4a5568;
+            background: #6776a8;
             border-radius: 0 0 10px 10px;
             z-index: 1000;
             display: none;
@@ -51,7 +51,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            background: #4a5568;
+            background: #6776a8;
             color: white;
         }
 
@@ -75,7 +75,7 @@
             padding: 8px;
             text-align: center;
             font-size: 12px;
-            color: #a0aec0;
+            color: #ffffff;
             font-weight: bold;
         }
 
@@ -86,10 +86,11 @@
             position: relative;
             overflow: hidden;
             transition: all 0.2s;
+            width: 100%;
         }
 
         .day {
-            width: 41px;             
+            width: auto;             
             height: 41px;               
             padding: 0;
             margin: 2px;
@@ -109,11 +110,11 @@
         }
 
         .day:hover {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
         }
 
         .day.other-month {
-            color: #718096;
+            color: #bdbdbd;
         }
 
         .day.selected {
@@ -175,15 +176,6 @@
             z-index: 1;
             pointer-events: none;
         }
-
-        .order-line.red { background-color: #e53e3e; }
-        .order-line.blue { background-color: #3182ce; }
-        .order-line.green { background-color: #38a169; }
-        .order-line.yellow { background-color: #d69e2e; }
-        .order-line.purple { background-color: #805ad5; }
-        .order-line.orange { background-color: #dd6b20; }
-        .order-line.pink { background-color: #d53f8c; }
-        .order-line.cyan { background-color: #0987a0; }
 
         .form-section {
             padding: 20px;
@@ -278,15 +270,6 @@
             gap: 5px;
         }
 
-        .order-item.red { border-left-color: #e53e3e; }
-        .order-item.blue { border-left-color: #3182ce; }
-        .order-item.green { border-left-color: #38a169; }
-        .order-item.yellow { border-left-color: #d69e2e; }
-        .order-item.purple { border-left-color: #805ad5; }
-        .order-item.orange { border-left-color: #dd6b20; }
-        .order-item.pink { border-left-color: #d53f8c; }
-        .order-item.cyan { border-left-color: #0987a0; }
-
         .order-customer {
             font-weight: bold;
             color: #2d3748;
@@ -334,3 +317,12 @@
             background: #fefcbf;
             color: #d69e2e;
         }
+
+.nav-btn{
+    color: #08ffad;
+    background: none;
+    border: none;
+    width: 20px;
+    cursor: pointer;
+    font-weight: 900;
+}
