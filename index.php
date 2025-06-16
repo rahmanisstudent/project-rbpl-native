@@ -11,7 +11,8 @@ try {
 // --- Fetch Events ---
 // Make sure your table and column names match your database
 // The column names must match what FullCalendar expects: title, start, end, color
-$sql = "SELECT tanggal_mulai as start, tanggal_selesai as end, CONCAT(jenis_model, ' ', nama_pelanggan) AS title, CONCAT('#', Warna) as color FROM pesanan";$stmt = $pdo->query($sql);
+$sql = "SELECT tanggal_mulai as start, DATE_ADD(tanggal_selesai, INTERVAL 1 DAY) as end, CONCAT(jenis_model, ' ', nama_pelanggan) AS title, CONCAT('#', Warna) as color FROM pesanan";
+$stmt = $pdo->query($sql);
 
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
