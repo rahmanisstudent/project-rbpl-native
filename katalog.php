@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Belum login → arahkan ke form login
+    header('Location: login.php');
+    exit;
+}
 include 'koneksi.php';
 
 $op = ""; // Untuk operasi edit/insert/delete
@@ -205,11 +211,13 @@ if (isset($_POST['submit'])) {
                 <div class="col">
                     <div class="card mx-auto h-100 resto-item">
                         <a href="model.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
-                            <img src="<?php echo htmlspecialchars($r['gambar_design']); ?>" class="card-img-top"alt="Desain Pakaian">
+                            <img src="<?php echo htmlspecialchars($r['gambar_design']); ?>" class="card-img-top"
+                                alt="Desain Pakaian">
                         </a>
                         <div class="card-body resto-details">
                             <a href="model.php?id=<?php echo $r['design_id']; ?>"> <!-- Link ke detail.php -->
-                                <h5 class="card-title text-truncate"><?php echo htmlspecialchars($r['jenis_pakaian']); ?></h5>
+                                <h5 class="card-title text-truncate"><?php echo htmlspecialchars($r['jenis_pakaian']); ?>
+                                </h5>
                                 <p class="card-text text-light opacity-75 text-truncate">
                                     <?php echo htmlspecialchars($r['deskripsi_design']); ?>
                                 </p>
@@ -273,11 +281,11 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>
         </div>
-        
+
         <div class="add-task" data-bs-toggle="modal" data-bs-target="#popupInput" data-bs-op="insert">
             <p>+</p>
         </div>
-        
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"

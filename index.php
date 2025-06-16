@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Belum login → arahkan ke form login
+    header('Location: login.php');
+    exit;
+}
+
 include 'koneksi.php';
 
 try {
@@ -8,9 +14,7 @@ try {
     die("Database error: " . $e->getMessage());
 }
 
-// --- Fetch Events ---
-// Make sure your table and column names match your database
-// The column names must match what FullCalendar expects: title, start, end, color
+
 $sql = "SELECT tanggal_mulai as start, DATE_ADD(tanggal_selesai, INTERVAL 1 DAY) as end, CONCAT(jenis_model, ' ', nama_pelanggan) AS title, CONCAT('#', Warna) as color FROM pesanan";
 $stmt = $pdo->query($sql);
 
@@ -61,11 +65,13 @@ $events_json = json_encode($events);
 
                     ?>
                     <div class="task">
-                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>" style="text-decoration: none;">
+                        <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>"
+                            style="text-decoration: none;">
                             <div style="display: flex; align-items: center; justify-content: space-between;">
                                 <div style="display: flex; align-items: center;">
                                     <div class="status" style="margin-right: 10px;">
-                                        <span class="dot" style="color: #<?php echo htmlspecialchars($row['Warna']); ?>;">&#9679</span>
+                                        <span class="dot"
+                                            style="color: #<?php echo htmlspecialchars($row['Warna']); ?>;">&#9679</span>
                                     </div>
                                     <div class="isiKiri">
                                         <h3 class="judulPesanan">
@@ -99,7 +105,7 @@ $events_json = json_encode($events);
                 initialView: 'dayGridMonth',
                 width: 500,
                 height: 550,
-                // ⬇️ Use PHP to echo the JSON string here ⬇️
+
                 events: <?php echo $events_json; ?>
             });
             calendar.render();

@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Belum login → arahkan ke form login
+    header('Location: login.php');
+    exit;
+}
+
 $host = "localhost";
 $user = "root";
 $pass = "";
