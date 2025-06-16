@@ -215,9 +215,9 @@ if ($error) {
 
     <div id="popup-ukuran"
         style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; justify-content:center; align-items:center;">
-        <div style="background:#fff; padding:24px; border-radius:8px; min-width:300px; position:relative;">
+        <div class="ukuranContainer">
             <button onclick="closePopup()"
-                style="position:absolute; top:8px; right:8px; background:none; border:none; font-size:18px; cursor:pointer;">&times;</button>
+                style="position:absolute; top:8px; right:8px; background:none; border:none; color: white; font-size:18px; cursor:pointer;">&times;</button>
             <h3>Tambah Ukuran Baru</h3>
             <div id="ukuran-buttons-container">
                 <button type="button" class="ukuran-button">Lingkar Tangan</button>
@@ -277,7 +277,7 @@ if ($error) {
                     input.id = inputId;
                     input.name = `ukuran_${inputId}`; // Unique name for PHP processing (e.g., ukuran_lingkar-tangan)
                     input.className = 'small';
-                    input.placeholder = `Masukkan ${ukuranName} (cm)`;
+                    input.placeholder = `Angka (cm)`;
                     input.autocomplete = 'off';
 
                     // Create remove button
