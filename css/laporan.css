@@ -102,7 +102,7 @@ body {
     flex-direction: row;
     align-items: center;
     gap: 8px;
-    padding: 20px 0px 0px 0px;
+    padding: 20px 0px 0px 30px;
 }
 
 .hari {
@@ -198,13 +198,6 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #ff6b6b;
 }
 
 .date {
