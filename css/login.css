@@ -30,32 +30,45 @@ body {
 body {
     background-color: #475581;
 }
+
 .container {
-  color: white;
-  background: #2E3C4E;
-  max-width: 400px;
-  margin: 40px auto 30px auto;
-  padding: 32px 32px 24px 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    color: white;
+    background: #2E3C4E;
+    max-width: 400px;
+    margin: 40px auto 30px auto;
+    padding: 32px 32px 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
 .login-form{
     padding: 20px;
 }
 
 .login-form h2{
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .input-group {
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 .input-group input{
     border-radius: 8px;
     width: 100%;
-    height: 25px;
+    height: 30px;
     padding-left: 15px;
     margin-top: 7px;
+    border: none;
+    background-color: #6776a8;
+    color: white;
+    font-size: 16px;
+    outline: none;
+
 }
 
 button{
@@ -68,4 +81,13 @@ button{
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
+}
+
+.errormsg {
+    color: red;
+    background-color: rgb(190, 105, 105);
+    border: red 1px solid;
+    padding: 10px;
+    border-radius: 8px;
+
 }

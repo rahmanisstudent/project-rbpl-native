@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Jika gagal login
-    $error = 'Username atau password salah.';
+    $error = 'Username atau password salah!';
     $stmt->close();
 }
 ?>
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="login-form">
             <h2>Login</h2>
             <?php if ($error): ?>
-                <p style="color: red;"><?= htmlspecialchars($error) ?></p>
+                <p class="errormsg"><?= htmlspecialchars($error) ?></p>
             <?php endif; ?>
             <form action="" method="post">
                 <div class="input-group">
