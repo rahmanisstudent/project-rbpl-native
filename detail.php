@@ -151,10 +151,9 @@ if (!$design) {
                         <h3>Ukuran</h3>
                         <ul>
                             <?php
-                            if (isset($designData['ukuran']) && !empty($designData['ukuran'])) {
-                                $ukuranList = explode(',', $designData['ukuran']);
+                            if (isset($design['ukuran']) && !empty($design['ukuran'])) {
+                                $ukuranList = explode(',', $design['ukuran']);
                                 foreach ($ukuranList as $ukuran) {
-                                    // Hilangkan spasi di awal/akhir dan tampilkan
                                     echo '<li>' . htmlspecialchars(trim($ukuran)) . '</li>';
                                 }
                             } else {
