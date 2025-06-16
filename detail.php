@@ -1,6 +1,11 @@
 <?php
-// Selalu mulai session di awal jika nanti butuh untuk notifikasi
 session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Belum login → arahkan ke form login
+    header('Location: login.php');
+    exit;
+}
+// Selalu mulai session di awal jika nanti butuh untuk notifikasi
 include 'koneksi.php';
 
 // 1. Validasi Input ID dari URL
@@ -156,7 +161,8 @@ if (!$design) {
         $designData = $stmtDesign->fetch(PDO::FETCH_ASSOC);
     }
     ?>
-    <div id="popup-detail" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; justify-content:center; align-items:center;">
+    <div id="popup-detail"
+        style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4); z-index:9999; justify-content:center; align-items:center;">
         <div class="popup-content">
             <span class="close" onclick="closePopupDetailPakaian()">&times;</span>
             <h2>Detail Pakaian</h2>
@@ -230,4 +236,5 @@ if (!$design) {
         }
     </script>
 </body>
+
 </html>

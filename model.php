@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    // Belum login → arahkan ke form login
+    header('Location: login.php');
+    exit;
+}
 // Include database connection
 include 'koneksi.php';
 
@@ -39,15 +45,8 @@ if (!$model) {
                 <?php echo htmlspecialchars($model['jenis_pakaian']); ?>
             </h1>
         </div>
-        <div class="next-prev">
-            <a href="model.php?id=<?php echo max(1, $id - 1); ?>" class="previous">&laquo;</a>
-            <a href="model.php?id=<?php echo $id + 1; ?>" class="next">&raquo;</a>
-        </div>
         <div class="gambar">
             <img src="<?php echo htmlspecialchars($model['gambar_design']); ?>" alt="Dress Pesta" class="model-image">
-        </div>
-        <div class="templateUkuran">
-            <h5>Template Ukuran:</h5>
         </div>
         <div class="deskripsi">
             <h5>Deskripsi Design:</h5>
@@ -58,7 +57,7 @@ if (!$model) {
     </div>
 
     <!-- Bootstrap JS (wajib untuk modal) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
