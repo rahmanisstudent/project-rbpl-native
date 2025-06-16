@@ -55,19 +55,10 @@ body {
   border-radius: 5px;
 }
 .task {
-  padding: 7px;
+  padding: 14px;
   margin: 5px 0;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: #2e3c4e;
-}
-.green {
-  background-color: #c8e6c9;
-}
-.red {
-  background-color: #ffcdd2;
-}
-.blue {
-  background-color: #bbdefb;
 }
 
 section {
@@ -94,7 +85,6 @@ section {
 
 .dot {
     border-radius: 50%;
-    /* color: black; */
 }
 
 .tanggal {

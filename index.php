@@ -11,8 +11,7 @@ try {
 // --- Fetch Events ---
 // Make sure your table and column names match your database
 // The column names must match what FullCalendar expects: title, start, end, color
-$sql = "SELECT tanggal_mulai as start, tanggal_selesai as end, CONCAT(jenis_model, ' ', nama_pelanggan) AS title FROM pesanan";
-$stmt = $pdo->query($sql);
+$sql = "SELECT tanggal_mulai as start, tanggal_selesai as end, CONCAT(jenis_model, ' ', nama_pelanggan) AS title, CONCAT('#', Warna) as color FROM pesanan";$stmt = $pdo->query($sql);
 
 $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -42,9 +41,12 @@ $events_json = json_encode($events);
             ?>
             <div id="calendar"></div>
         </section>
+
+
+
         <section class="list">
             <div class="task-list">
-                <h3>Daftar Pekerjaan</h3>
+                <h3 style="margin-bottom: 30px;">Daftar Pekerjaan</h3>
                 <?php
                 // Fetch task list from the database
                 $sql = "SELECT pesanan_id, jenis_model, nama_pelanggan, tanggal_mulai, tanggal_selesai, status_pengerjaan, Warna FROM pesanan ORDER BY tanggal_mulai ASC";
@@ -56,13 +58,6 @@ $events_json = json_encode($events);
                     $end = date('j F Y', strtotime($row['tanggal_selesai']));
                     $dateRange = $start . ' - ' . $end;
 
-                    // Determine task color based on status
-                    // $colorClass = 'blue';
-                    // if (stripos($row['status_pengerjaan'], 'Finishing') !== false) {
-                    //     $colorClass = 'green';
-                    // } elseif (stripos($row['status_pengerjaan'], 'Pemotongan') !== false) {
-                    //     $colorClass = 'red';
-                    // }
                     ?>
                     <div class="task">
                         <a href="detail.php?id=<?php echo htmlspecialchars($row['pesanan_id']); ?>" style="text-decoration: none;">
